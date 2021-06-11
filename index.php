@@ -292,7 +292,7 @@ if (isset($_POST['login'])) {
                 <i class="material-icons right">login</i>
               </button>
               <div><br>
-                <!-- <a href="collector_login.php">Forgot Password</a> -->
+                <a href="forgot_password.php">Forgot Password</a>
               </div>
             </div><br>
             <div class="divider"></div>
