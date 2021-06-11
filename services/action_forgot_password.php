@@ -30,7 +30,7 @@ if ($result = $conn -> query($sql)) {
             //Server settings
             include 'mail_credentials.php';
             //Recipients
-            $mail->addAddress('danielenacis@gmail.com');               
+            $mail->addAddress($user->email);               
             //Content
             $mail->isHTML(true);                                  
             $mail->Subject          = 'Password Reset';
