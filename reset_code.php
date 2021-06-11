@@ -55,20 +55,20 @@ session_start();
                             <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 offset-m3">
-                                <form action="services/action_forgot_password.php" method="post">
+                                <form action="services/action_reset_code.php?&user=<?php echo $_REQUEST['user'];?>" method="post">
                                     <div class="card">
                                         <div class="card-content">
-                                        <span class="card-title black-text">Forgot Password</span>
+                                        <span class="card-title black-text">Code Verification</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Enter Valid Email" id="email" name="email" type="email" class="validate" value="<?php echo !empty($_SESSION['old_request'])&& isset($_SESSION['old_request']) ? $_SESSION['old_request']['email']  : '' ; ?>">
-                                                    <label for="email" class="active">Email</label>
+                                                    <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']) ? $_SESSION['old_request']['otp']  : '' ; ?>">
+                                                    <label for="otp" class="active">Reset Code:</label>
                                                 </div>
                                             </div>
                                        
                                         </div>
                                         <div class="card-action">
-                                        <input type="submit" class="btn" value="Reset Password">
+                                        <input type="submit" class="btn" value="Submit">
                                         </div>
                                     </div>
                                 </form>

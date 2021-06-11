@@ -55,20 +55,27 @@ session_start();
                             <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 offset-m3">
-                                <form action="services/action_forgot_password.php" method="post">
+                                <form action="services/action_new_password.php?&user=<?php echo $_REQUEST['user'];?>" method="post">
                                     <div class="card">
                                         <div class="card-content">
-                                        <span class="card-title black-text">Forgot Password</span>
+                                        <span class="card-title black-text">New Password</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Enter Valid Email" id="email" name="email" type="email" class="validate" value="<?php echo !empty($_SESSION['old_request'])&& isset($_SESSION['old_request']) ? $_SESSION['old_request']['email']  : '' ; ?>">
-                                                    <label for="email" class="active">Email</label>
+                                                    <input placeholder="Create New Password" id="new_password" name="new_password" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request'])  && isset($_SESSION['old_request'])? $_SESSION['old_request']['new_password']  : '' ; ?>">
+                                                    <label for="new_password" class="active">New Password:</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Confirm New Password" id="confirm_new_password" name="confirm_new_password" type="text" class="validate" >
+                                                    <label for="confirm_new_password" class="active">Confirm New Password:</label>
                                                 </div>
                                             </div>
                                        
                                         </div>
                                         <div class="card-action">
-                                        <input type="submit" class="btn" value="Reset Password">
+                                        <input type="submit" class="btn" value="Submit">
                                         </div>
                                     </div>
                                 </form>
