@@ -16,17 +16,11 @@ if ($result = $conn -> query($sql)) {
     $user = $result->fetch_object();
     // creating one time password (random 6 characters)
     $otp  = substr(md5(microtime()),rand(0,26),6);
-    // encrypting email of the user to pass in request
-    $ciphering                  = "AES-128-CTR";
-    $iv_length                  = openssl_cipher_iv_length($ciphering);
-    $options                    = 0;
-    $encryption_iv              = '1234567891011121';
-    $encryption_key             = 'iresiklo';
-    $encryptedUserEmail         = openssl_encrypt($user->email, $ciphering,$encryption_key, $options, $encryption_iv);
-    $linkTo                     = "http://iresiklo.test/reset_code.php?&user=".$encryptedUserEmail."";
 
     //check $user is not empty
     if(!empty($user)){
+        
+        $linkTo                     = "http://iresiklo.test/reset_code.php?&user=".$user->email."&id=".$user->id."";
         $updateSql                  = "UPDATE tbl_userinfo SET otp = '$otp'  where id = '$user->id'";
         $qry                        = mysqli_query($conn, $updateSql) or die(mysqli_error($conn));
 
@@ -52,7 +46,8 @@ if ($result = $conn -> query($sql)) {
             $_SESSION['status_message'] = 'We sent an reset code to your email!';
             
             unset($_SESSION['old_request']);
-            header("Location: /reset_code.php?&user=".$encryptedUserEmail."");
+            // header("Location: /reset_code.php?&user=".$user->email."&id=".$user->id."");
+            header("Location: /");
             exit();
             // echo "<script>
             //     window.location.href='/reset_code.php?&user=".$encryptedUserEmail."'

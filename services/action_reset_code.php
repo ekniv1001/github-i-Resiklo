@@ -4,17 +4,9 @@ include 'database_connection.php';
 session_start();
 
 unset($_SESSION['old_request']);
-// decrypting user email in request
-$ciphering                  = "AES-128-CTR";
-$iv_length                  = openssl_cipher_iv_length($ciphering);
-$options                    = 0;
-$decryption_iv              = '1234567891011121';
-$decryption_key             = 'iresiklo';
-$decryptedUserEmail         = openssl_decrypt ($_REQUEST['user'], $ciphering,$decryption_key, $options, $decryption_iv);
-
-return var_dump($decryptedUserEmail);
-$email                              = $conn->real_escape_string($decryptedUserEmail);
-$sql                                = "SELECT * FROM tbl_userinfo WHERE email='$email' AND otp IS NOT NULL";
+$email                              = $conn->real_escape_string($_REQUEST['user']);
+$userid                              = $conn->real_escape_string($_REQUEST['id']);
+$sql                                = "SELECT * FROM tbl_userinfo WHERE email='$email' AND id ='$userid'";
 // return var_dump($_POST);
 if ($result = $conn -> query($sql)) {
     // fetch user and make it an object 
@@ -31,7 +23,7 @@ if ($result = $conn -> query($sql)) {
             $_SESSION['status_message'] = '';
             $_SESSION['old_request']    = $_POST;
             unset($_SESSION['old_request']);
-            header("Location: /new_password.php?&user=".$_REQUEST['user']."");
+            header("Location: /new_password.php?&user=".$_REQUEST['user']."&id=".$_REQUEST['id']."");
             exit();
         }
         else
@@ -41,7 +33,7 @@ if ($result = $conn -> query($sql)) {
             $_SESSION['status_message'] = 'Whoops Reset Code is not correct!';
             $_SESSION['old_request']    = $_POST;
            
-            header("Location: /reset_code.php?&user=".$_REQUEST['user']."");
+            header("Location: /reset_code.php?&user=".$_REQUEST['user']."&id=".$_REQUEST['id']."");
             exit();
         }
        
@@ -52,7 +44,7 @@ if ($result = $conn -> query($sql)) {
         $_SESSION['status_code']    = 'error';
         $_SESSION['status_message'] = 'Whoops Something Went Wrong!';
         $_SESSION['old_request']    = $_POST;
-        header("Location: /reset_code.php?&user=".$_REQUEST['user']."");
+        header("Location: /reset_code.php?&user=".$_REQUEST['user']."&id=".$_REQUEST['id']."");
         exit();
     }
 

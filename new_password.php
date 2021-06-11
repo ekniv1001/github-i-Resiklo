@@ -55,20 +55,21 @@ session_start();
                             <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 offset-m3">
-                                <form action="services/action_new_password.php?&user=<?php echo $_REQUEST['user'];?>" method="post">
+                                <form action="services/action_new_password.php?&user=<?php echo $_REQUEST['user'];?>&id=<?php echo $_REQUEST['id'];?>" method="post">
                                     <div class="card">
                                         <div class="card-content">
                                         <span class="card-title black-text">New Password</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Create New Password" id="new_password" name="new_password" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request'])  && isset($_SESSION['old_request'])? $_SESSION['old_request']['new_password']  : '' ; ?>">
+                                                    <!-- <input placeholder="Create New Password" id="new_password" name="new_password" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request'])  && isset($_SESSION['old_request'])? $_SESSION['old_request']['new_password']  : '' ; ?>"> -->
+                                                    <input placeholder="Create New Password" id="new_password" name="new_password" type="password" class="validate">
                                                     <label for="new_password" class="active">New Password:</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Confirm New Password" id="confirm_new_password" name="confirm_new_password" type="text" class="validate" >
+                                                    <input placeholder="Confirm New Password" id="confirm_new_password" name="confirm_new_password" type="password" class="validate" >
                                                     <label for="confirm_new_password" class="active">Confirm New Password:</label>
                                                 </div>
                                             </div>

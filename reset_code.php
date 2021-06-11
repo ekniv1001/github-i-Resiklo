@@ -55,13 +55,14 @@ session_start();
                             <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 offset-m3">
-                                <form action="services/action_reset_code.php?&user=<?php echo $_REQUEST['user'];?>" method="post">
+                                <form action="services/action_reset_code.php?&user=<?php echo $_REQUEST['user'];?>&id=<?php echo $_REQUEST['id'];?>" method="post">
                                     <div class="card">
                                         <div class="card-content">
                                         <span class="card-title black-text">Code Verification</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']) ? $_SESSION['old_request']['otp']  : '' ; ?>">
+                                                    <!-- <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']) && isset($_SESSION['old_request']) ? $_SESSION['old_request']['otp']  : '' ; ?>"> -->
+                                                    <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" >
                                                     <label for="otp" class="active">Reset Code:</label>
                                                 </div>
                                             </div>
