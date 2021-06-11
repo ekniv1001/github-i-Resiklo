@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
     $default_image = "defaultimg.png";
     $points = 0;
     $barangay = $_POST['barangay'];
+    
     if ($password != $confirm_password) { ?>
 
         <script>
