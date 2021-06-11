@@ -61,7 +61,7 @@ session_start();
                                         <span class="card-title black-text">Forgot Password</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input placeholder="Enter Valid Email" id="email" name="email" type="email" class="validate">
+                                                    <input placeholder="Enter Valid Email" id="email" name="email" type="email" class="validate" value="<?php echo !empty($_SESSION['old_request']) ? $_SESSION['old_request']['email']  : '' ; ?>">
                                                     <label for="email" class="active">Email</label>
                                                 </div>
                                             </div>
