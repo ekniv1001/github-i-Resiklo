@@ -17,9 +17,20 @@ if (isset($_POST['login'])) {
   $row_admin = mysqli_fetch_array($run_admin);
 
   if (mysqli_num_rows($run_admin) == 1) {
-    session_start();
-    $_SESSION['id'] = $row_admin['id'];
-    header('location:user/user_home_view.php');
+    // check if user is verified
+    if(!empty($row_admin['email_verified_at']))
+    {
+      session_start();
+      $_SESSION['id'] = $row_admin['id'];
+      header('location:user/user_home_view.php');
+    }
+    else{
+      $_SESSION['status'] = 'Error';
+      $_SESSION['status_code'] = 'error';
+      $_SESSION['status_message'] = 'Invalid Username or Password Please try again.';
+      header("Location: index.php");
+      exit();
+    }
   } else {
 
     $_SESSION['status'] = 'Error';

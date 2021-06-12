@@ -70,11 +70,15 @@ if (isset($_POST['submit'])) {
 
         if ($result) {
 
-            $_SESSION['status'] = 'Success';
-            $_SESSION['status_code'] = 'success';
-            $_SESSION['status_message'] = 'Successfully Registered! You may now Login';
-            unset($_SESSION['old_request']);
-            header("Location: index.php");
+            $newUserId = mysqli_insert_id($conn);
+            // printf ("New Record has id %d.\n", mysqli_insert_id($conn));
+            // $_SESSION['status'] = 'Success';
+            // $_SESSION['status_code'] = 'success';
+            // $_SESSION['status_message'] = 'Successfully Registered! You may now Login';
+            // unset($_SESSION['old_request']);
+            
+            // header("Location: /index.php");
+            header("Location: services/action_user_verify_email.php?&userId=".$newUserId."");
             exit();
         }
     }
