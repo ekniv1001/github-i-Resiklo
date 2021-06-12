@@ -51,10 +51,6 @@ if (isset($_POST['login'])) {
   <!-- Import fontawesome -->
   <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<<<<<<< HEAD
-=======
-
->>>>>>> 4a8340f8a828b5a509040613a3cef60b02823eea
 
   <title>i-Resiklo-Landing-Page</title>
 
