@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'services/database_connection.php';
 
 
@@ -27,30 +28,52 @@ if (isset($_POST['submit'])) {
     $default_image = "defaultimg.png";
     $points = 0;
     $barangay = $_POST['barangay'];
+
+    if ($password != $confirm_password) {
+
+        $_SESSION['status'] = 'Error';
+        $_SESSION['status_code'] = 'error';
+        $_SESSION['status_message'] = 'Oops! Password Don\'t Match';
+        header("Location: sign_up.php");
+        exit();
+    }
+
+
+    $query = "SELECT * from tbl_userinfo where email = '$email'";
+    $sql = mysqli_query($conn, $query);
+    $result = mysqli_num_rows($sql);
+
+    if ($result > 0) {
+        $_SESSION['status'] = 'Error';
+        $_SESSION['status_code'] = 'error';
+        $_SESSION['status_message'] = 'Oops! The email you\'ve entered is already in used.';
+        header("Location: sign_up.php");
+        exit();
+    }
+
+    $query = "SELECT * from tbl_userinfo where user_name = '$user_name'";
+    $sql = mysqli_query($conn, $query);
+    $result = mysqli_num_rows($sql);
+    if ($result > 0) {
+        $_SESSION['status'] = 'Error';
+        $_SESSION['status_code'] = 'error';
+        $_SESSION['status_message'] = 'Oops! The username you\'ve entered is already in taken.';
+        header("Location: sign_up.php");
+        exit();
+    }
     
-    if ($password != $confirm_password) { ?>
-
-        <script>
-            alert("Password doesn't match.");
-        </script>
-
-        <?php
-    } else {
+    else {
 
         $query = "INSERT INTO tbl_userinfo (first_name, last_name, birthday, address, contact_number, email, user_name, password, user_type, photo, points, barangay ) VALUES ('$first_name', '$last_name', '$birthday', '$address', '$contact_number', '$email', '$user_name', '$password' , '$user_type', '$default_image' , '$points', '$barangay' )";
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
         if ($result) {
 
-        ?>
-
-            <script>
-                alert("Register successfully");
-                window.location.href = 'index.php';
-            </script>
-
-<?php
-
+            $_SESSION['status'] = 'Success';
+            $_SESSION['status_code'] = 'success';
+            $_SESSION['status_message'] = 'Successfully Registered! You may now Login';
+            header("Location: index.php");
+            exit();
         }
     }
 }
@@ -73,6 +96,22 @@ if (isset($_POST['submit'])) {
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <script>
+        var check = function() {
+            if (document.getElementById('password').value ==
+                document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Password Match';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Password do not Match';
+            }
+        }
+    </script>
+
 
     <title>i-Resiklo</title>
 
@@ -101,7 +140,7 @@ if (isset($_POST['submit'])) {
                 <!-- form -->
                 <div class="col s12 m12 l6">
                     <div class="row">
-                        <form action="" method="POST" class="col s12">
+                        <form action="sign_up.php" method="POST" class="col s12">
                             <div class="row">
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix green-text text-green lighten-1">account_circle</i>
@@ -123,7 +162,7 @@ if (isset($_POST['submit'])) {
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix green-text text-green lighten-1">place</i>
-                                    <select name="barangay" required="" >
+                                    <select name="barangay" required="">
                                         <option value="" disabled selected> <label for=""> Choose your Barangay</label></option>
                                         <option value="Anilao">Anilao</option>
                                         <option value="Atlag">Atlag</option>
@@ -206,14 +245,14 @@ if (isset($_POST['submit'])) {
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix green-text text-green lighten-1">account_circle</i>
-                                    <input id="username" type="text" name="user_name" class="validate" value="<?php echo $user_name; ?>" required>
+                                    <input id="username" type="text" name="user_name" class="validate" value="<?php echo $user_name; ?>" minlength="6" required>
                                     <label for="username">Username</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s10">
                                     <i class="material-icons prefix green-text text-green lighten-1">lock</i>
-                                    <input id="password" type="password" name="password" class="validate" required>
+                                    <input id="password" type="password" name="password" class="validate" minlength="8" required>
                                     <label for="password">Password</label>
                                 </div><br><br>
                                 <div class="col s2">
@@ -223,11 +262,13 @@ if (isset($_POST['submit'])) {
                                     </label>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="input-field col s10">
                                     <i class="material-icons prefix green-text text-green lighten-1">password</i>
-                                    <input id="confirm_password" type="password" name="confirm_password" class="validate" required>
-                                    <label for="confirm_password">Confirmm Password</label>
+                                    <input id="confirm_password" type="password" name="confirm_password" class="validate" onkeyup="check()" required>
+                                    <label for="confirm_password">Confirm Password</label>
+                                    <span class="helper-text" id="message"></span>
                                 </div><br><br>
                                 <div class="col s2">
                                     <label>
@@ -235,7 +276,9 @@ if (isset($_POST['submit'])) {
                                         <span>Show</span>
                                     </label>
                                 </div>
+
                             </div>
+
                             <label for="termscons">By clicking Sign Up, you agree to our <a href=""><em>Terms, Data Policy</em></a>
                                 and <a href=""><em>Cookies Policy</em></a>. You may receive SMS Notifications
                                 from us and can opt out any time.</label>
@@ -295,6 +338,24 @@ if (isset($_POST['submit'])) {
             }
         }
     </script>
+
+    <?php
+    if (isset($_SESSION['status'])) {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status']; ?>",
+                text: "<?php echo $_SESSION['status_message']; ?>",
+                icon: "<?php echo $_SESSION['status_code']; ?>",
+            });
+        </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_message']);
+        unset($_SESSION['status_code']);
+    }
+    ?>
 
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
