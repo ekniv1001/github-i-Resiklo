@@ -61,8 +61,8 @@ session_start();
                                         <span class="card-title black-text">Code Verification</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <!-- <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']) && isset($_SESSION['old_request']) ? $_SESSION['old_request']['otp']  : '' ; ?>"> -->
-                                                    <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" >
+                                                    <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']['otp']) && isset($_SESSION['old_request']['otp']) ? $_SESSION['old_request']['otp']  : '' ; ?>">
+                                                    <!-- <input placeholder="Enter Reset Code" id="otp" name="otp" type="text" class="validate" > -->
                                                     <label for="otp" class="active">Reset Code:</label>
                                                 </div>
                                             </div>

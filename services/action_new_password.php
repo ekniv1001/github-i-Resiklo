@@ -4,7 +4,6 @@ include 'database_connection.php';
 session_start();
 
 unset($_SESSION['old_request']);
-// decrypting user email in request
 
 $email                              = $conn->real_escape_string($_REQUEST['user']);
 $userid                             = $conn->real_escape_string($_REQUEST['id']);

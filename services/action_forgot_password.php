@@ -20,7 +20,8 @@ if ($result = $conn -> query($sql)) {
     //check $user is not empty
     if(!empty($user)){
         
-        $linkTo                     = "http://i-resiklo.com/reset_code.php?&user=".$user->email."&id=".$user->id."";
+        // $linkTo                     = "http://iresiklo.test/reset_code.php?&user=".$user->email."&id=".$user->id."";
+        $linkTo                     = "https://i-resiklo.com/reset_code.php?&user=".$user->email."&id=".$user->id."";
         $updateSql                  = "UPDATE tbl_userinfo SET otp = '$otp'  where id = '$user->id'";
         $qry                        = mysqli_query($conn, $updateSql) or die(mysqli_error($conn));
 

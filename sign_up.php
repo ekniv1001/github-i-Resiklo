@@ -2,15 +2,13 @@
 session_start();
 include 'services/database_connection.php';
 
-
-
-$first_name = "";
-$last_name = "";
-$address = "";
-$contact_number = "";
-$email = "";
-$user_name = "";
-$birthday = "";
+$first_name         = !empty($_SESSION['old_request']['first_name'])        ? $_SESSION['old_request']['first_name']           : "";
+$last_name          = !empty($_SESSION['old_request']['last_name'])         ? $_SESSION['old_request']['last_name']            : "";
+$address            = !empty($_SESSION['old_request']['address'])           ? $_SESSION['old_request']['address']              : "";
+$contact_number     = !empty($_SESSION['old_request']['contact_number'])    ? $_SESSION['old_request']['contact_number']       : "";
+$email              = !empty($_SESSION['old_request']['email'])             ? $_SESSION['old_request']['email']                : "";
+$user_name          = !empty($_SESSION['old_request']['user_name'])         ? $_SESSION['old_request']['user_name']            : "";
+$birthday           = !empty($_SESSION['old_request']['birthday'])          ? $_SESSION['old_request']['birthday']             : "";
 
 
 if (isset($_POST['submit'])) {
@@ -31,9 +29,10 @@ if (isset($_POST['submit'])) {
 
     if ($password != $confirm_password) {
 
-        $_SESSION['status'] = 'Error';
-        $_SESSION['status_code'] = 'error';
+        $_SESSION['status']         = 'Error';
+        $_SESSION['status_code']    = 'error';
         $_SESSION['status_message'] = 'Oops! Password Don\'t Match';
+        $_SESSION['old_request']      = $_POST;
         header("Location: sign_up.php");
         exit();
     }
@@ -47,6 +46,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['status'] = 'Error';
         $_SESSION['status_code'] = 'error';
         $_SESSION['status_message'] = 'Oops! The email you\'ve entered is already in used.';
+        $_SESSION['old_request']      = $_POST;
         header("Location: sign_up.php");
         exit();
     }
@@ -58,6 +58,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['status'] = 'Error';
         $_SESSION['status_code'] = 'error';
         $_SESSION['status_message'] = 'Oops! The username you\'ve entered is already in taken.';
+        $_SESSION['old_request']      = $_POST;
         header("Location: sign_up.php");
         exit();
     }
@@ -72,6 +73,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['status'] = 'Success';
             $_SESSION['status_code'] = 'success';
             $_SESSION['status_message'] = 'Successfully Registered! You may now Login';
+            unset($_SESSION['old_request']);
             header("Location: index.php");
             exit();
         }

@@ -61,8 +61,8 @@ session_start();
                                         <span class="card-title black-text">New Password</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <!-- <input placeholder="Create New Password" id="new_password" name="new_password" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request'])  && isset($_SESSION['old_request'])? $_SESSION['old_request']['new_password']  : '' ; ?>"> -->
-                                                    <input placeholder="Create New Password" id="new_password" name="new_password" type="password" class="validate">
+                                                    <input placeholder="Create New Password" id="new_password" name="new_password" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']['new_password'])  && isset($_SESSION['old_request']['new_password'])? $_SESSION['old_request']['new_password']  : '' ; ?>">
+                                                    <!-- <input placeholder="Create New Password" id="new_password" name="new_password" type="password" class="validate"> -->
                                                     <label for="new_password" class="active">New Password:</label>
                                                 </div>
                                             </div>

@@ -2,8 +2,6 @@
 session_start();
 include 'services/database_connection.php';
 
-session_start();
-
 unset($_SESSION['old_request']);
 
 if (isset($_POST['login'])) {
