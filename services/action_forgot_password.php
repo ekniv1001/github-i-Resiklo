@@ -19,9 +19,13 @@ if ($result = $conn -> query($sql)) {
 
     //check $user is not empty
     if(!empty($user)){
-        
+        if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+            $url = "https://";   
+        else  
+            $url = "http://";   
+        $url.= $_SERVER['HTTP_HOST'];
         // $linkTo                     = "http://iresiklo.test/reset_code.php?&user=".$user->email."&id=".$user->id."";
-        $linkTo                     = "https://i-resiklo.com/reset_code.php?&user=".$user->email."&id=".$user->id."";
+        $linkTo                     = "".$url."/reset_code.php?&user=".$user->email."&id=".$user->id."";
         $updateSql                  = "UPDATE tbl_userinfo SET otp = '$otp'  where id = '$user->id'";
         $qry                        = mysqli_query($conn, $updateSql) or die(mysqli_error($conn));
 
