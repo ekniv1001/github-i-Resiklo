@@ -48,59 +48,58 @@ session_start();
     </ul>
   </header>
 
-<main>
-    
-                    <div class="valign-wrapper" style="width:100%; height:60vh;position: absolute;">
-                        <div class="valign" style="width:100%;">
-                            <div class="container">
-                            <div class="row">
-                                <div class="col s12 m6 offset-m3">
-                                <form action="services/action_new_password.php?&user=<?php echo $_REQUEST['user'];?>&id=<?php echo $_REQUEST['id'];?>" method="post">
-                                    <div class="card">
-                                        <div class="card-content">
-                                        <span class="card-title black-text">New Password</span>
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <input placeholder="Create New Password" id="new_password" name="new_password" type="text" class="validate" value="<?php echo !empty($_SESSION['old_request']['new_password'])  && isset($_SESSION['old_request']['new_password'])? $_SESSION['old_request']['new_password']  : '' ; ?>">
-                                                    <!-- <input placeholder="Create New Password" id="new_password" name="new_password" type="password" class="validate"> -->
-                                                    <label for="new_password" class="active">New Password:</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <input placeholder="Confirm New Password" id="confirm_new_password" name="confirm_new_password" type="password" class="validate" >
-                                                    <label for="confirm_new_password" class="active">Confirm New Password:</label>
-                                                </div>
-                                            </div>
-                                       
-                                        </div>
-                                        <div class="card-action">
-                                        <input type="submit" class="btn" value="Submit">
-                                        </div>
-                                    </div>
-                                </form>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+  <main>
+    <br>
+    <div class="valign-wrapper" style="width:100%; height:60vh;position: absolute;">
+      <div class="valign" style="width:100%;">
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m6 offset-m3">
+              <form action="services/action_new_password.php?&user=<?php echo $_REQUEST['user']; ?>&id=<?php echo $_REQUEST['id']; ?>" method="post">
+                <div class="card">
+                  <div class="card-content">
+                    <span class="card-title green-text">New Password</span>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input placeholder="Create New Password" id="new_password" name="new_password" type="password" class="validate" value="<?php echo !empty($_SESSION['old_request']['new_password'])  && isset($_SESSION['old_request']['new_password']) ? $_SESSION['old_request']['new_password']  : ''; ?>">
+                        <!-- <input placeholder="Create New Password" id="new_password" name="new_password" type="password" class="validate"> -->
+                        <label for="new_password" class="active">New Password:</label>
+                      </div>
                     </div>
 
-</main>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input placeholder="Confirm New Password" id="confirm_new_password" name="confirm_new_password" type="password" class="validate">
+                        <label for="confirm_new_password" class="active">Confirm New Password:</label>
+                      </div>
+                    </div>
 
-    
-
-
-    <!-- Footer Section -->
-
-    <footer class="page-footer green lighten-1">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">CENRO MALOLOS</h5>
-            <p class="grey-text text-lighten-4"></p>City Environment and Natural resources Office
+                  </div>
+                  <div class="card-action">
+                    <input type="submit" class="btn" value="Submit">
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-          <!-- <div class="col l4 offset-l2 s12">
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+  <!-- Footer Section -->
+
+  <footer class="page-footer green lighten-1">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">CENRO MALOLOS</h5>
+          <p class="grey-text text-lighten-4"></p>City Environment and Natural resources Office
+        </div>
+        <!-- <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Links</h5>
             <ul>
               <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
@@ -109,56 +108,55 @@ session_start();
               <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
             </ul>
           </div> -->
-        </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © <?php echo date("Y"); ?> Copyright
-          <a class="grey-text text-lighten-4 right" href="#!">Developed by: Gatchalian Mark & Mandawe Carlo</a>
-        </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © <?php echo date("Y"); ?> Copyright
+        <a class="grey-text text-lighten-4 right" href="#!">Developed by: Gatchalian Mark & Mandawe Carlo</a>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script>
-      function showPass() {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
+  <script>
+    function showPass() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
       }
+    }
     //   Swal.fire({
     //         title: "Error!",
     //         text: "Do you want to continue",
     //         icon: "error",
     //         confirmButtonText: "Cool"
     //       });
+  </script>
+
+
+  <?php
+  if (isset($_SESSION['status'])) {
+
+  ?>
+    <script>
+      swal({
+        title: "<?php echo $_SESSION['status']; ?>",
+        text: "<?php echo $_SESSION['status_message']; ?>",
+        icon: "<?php echo $_SESSION['status_code']; ?>",
+      });
     </script>
+  <?php
+    unset($_SESSION['status']);
+    unset($_SESSION['status_message']);
+    unset($_SESSION['status_code']);
+  }
+  ?>
 
-
-        <?php
-            if(isset($_SESSION['status']))
-            {
-            
-        ?>
-                <script>
-                       swal({
-                            title: "<?php echo $_SESSION['status'];?>",
-                            text: "<?php echo $_SESSION['status_message'];?>",
-                            icon: "<?php echo $_SESSION['status_code'];?>",
-                        });
-                </script>
-        <?php 
-            unset($_SESSION['status']);
-            unset($_SESSION['status_message']);
-            unset($_SESSION['status_code']);
-        }
-        ?>
-
-    <!-- Materialize Scripts -->
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <script type="text/javascript" src="js/init.js"></script>
+  <!-- Materialize Scripts -->
+  <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
 
 </body>
 

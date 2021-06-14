@@ -15,7 +15,7 @@ $qry = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 ?>
 <script>
-	alert("voucher successfully claimed");
+	alert("Voucher Successfully Redeem");
 	window.location.href='../user/user_voucher.php';
 </script>
 

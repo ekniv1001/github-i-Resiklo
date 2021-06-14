@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'services/database_connection.php';
 
 
@@ -19,7 +20,12 @@ if (isset($_POST['login'])) {
         $_SESSION['id'] = $row_admin['id'];
         header('location:admin/admin_dashboard.php');
     } else {
-        echo "<script>alert('Invalid Username and Password')</script>";
+
+        $_SESSION['status'] = 'Error';
+        $_SESSION['status_code'] = 'error';
+        $_SESSION['status_message'] = 'Invalid Username or Password Please try again.';
+        header("Location: admin_login.php");
+        exit();
     }
 }
 
@@ -41,6 +47,8 @@ if (isset($_POST['login'])) {
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection">
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 
     <title>i-Resiklo</title>
@@ -68,22 +76,25 @@ if (isset($_POST['login'])) {
                             </div>
                         </div>
                         <div class="row">
-                                <div class="input-field col s10">
-                                    <i class="material-icons prefix green-text text-green lighten-1">lock</i>
-                                    <input id="password" type="password" name="password" class="validate" required>
-                                    <label for="password">Password</label>
-                                </div><br><br>
-                                <div class="col s2">
-                                    <label>
-                                        <input type="checkbox" onclick="showPass()" class="filled-in" />
-                                        <span>Show</span>
-                                    </label>
-                                </div>
+                            <div class="input-field col s10">
+                                <i class="material-icons prefix green-text text-green lighten-1">lock</i>
+                                <input id="password" type="password" name="password" class="validate" required>
+                                <label for="password">Password</label>
+                            </div><br><br>
+                            <div class="col s2">
+                                <label>
+                                    <input type="checkbox" onclick="showPass()" class="filled-in" />
+                                    <span>Show</span>
+                                </label>
                             </div>
+                        </div>
                         <div class="center">
                             <button class="btn waves-effect waves-light green lighten-1" type="submit" name="login">Login
                                 <i class="material-icons right">login</i>
                             </button>
+                        </div>
+                        <div><br>
+                            <a href="forgot_password.php">Forgot Password</a>
                         </div>
                     </div>
                 </div>
@@ -104,15 +115,33 @@ if (isset($_POST['login'])) {
         });
     </script>
     <script>
-            function showPass() {
-                var x = document.getElementById("password");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
+        function showPass() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
             }
+        }
+    </script>
+
+    <?php
+    if (isset($_SESSION['status'])) {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status']; ?>",
+                text: "<?php echo $_SESSION['status_message']; ?>",
+                icon: "<?php echo $_SESSION['status_code']; ?>",
+            });
         </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_message']);
+        unset($_SESSION['status_code']);
+    }
+    ?>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
 

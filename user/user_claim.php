@@ -3,61 +3,45 @@ include "sessionbody.php";
 $claim_id = $_GET['claim_id'];
 
 
+if (isset($_POST['claimbtn'])) {
+
+    $claimed = "claimed";
+?>
+    <script>
+        const answer = confirm("Are you sure you want to mark this as claimed item?");
+        if (answer == true) {
+            window.location.href = '../services/action_voucher_claimed.php?claim_id=<?php echo $claim_id; ?>&user_id=<?php echo isset($id) ? $id : ''; ?>';
+        } else {
 
 
+        }
+    </script>F
 
-  if (isset($_POST['claimbtn'])) {
- 
-        $claimed = "claimed";
-    ?>
-        <script>
-            const answer = confirm("Are you sure you want to mark this as claimed item?");
-            if (answer == true) {
-                window.location.href = '../services/action_voucher_claimed.php?claim_id=<?php echo $claim_id; ?>&user_id=<?php echo isset($id) ? $id : ''; ?>';
-            } else {
-
-
-            }
-        </script>
-
-    <?php
-    }
-
-
-
-
-
-
-
-
-
- $qry = "SELECT * FROM tbl_claim where claim_id = '$claim_id'";
-    $result = mysqli_query($conn, $qry);
-    while ($show = mysqli_fetch_array($result)) {
-
-$claim_reward_id = $show['claim_reward_id'];
-$claim_quantity = $show['claim_quantity'];
-
+<?php
 }
 
 
 
- $qry = "SELECT * FROM tbl_rewards where id_reward = '$claim_reward_id'";
-    $result = mysqli_query($conn, $qry);
-    while ($show = mysqli_fetch_array($result)) {
+$qry = "SELECT * FROM tbl_claim where claim_id = '$claim_id'";
+$result = mysqli_query($conn, $qry);
+while ($show = mysqli_fetch_array($result)) {
 
-$picture = $show['picture'];
-$reward_item = $show['reward_item'];
-$equiv_points = $show['equiv_points'];
+    $claim_reward_id = $show['claim_reward_id'];
+    $claim_quantity = $show['claim_quantity'];
+}
 
+
+
+$qry = "SELECT * FROM tbl_rewards where id_reward = '$claim_reward_id'";
+$result = mysqli_query($conn, $qry);
+while ($show = mysqli_fetch_array($result)) {
+
+    $picture = $show['picture'];
+    $reward_item = $show['reward_item'];
+    $equiv_points = $show['equiv_points'];
 }
 
 ?>
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -96,6 +80,7 @@ $equiv_points = $show['equiv_points'];
                             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
                             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
                             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+                            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
                             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
                             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="sign_up.php">Signup</a></li> -->
@@ -111,6 +96,7 @@ $equiv_points = $show['equiv_points'];
             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
         </ul>
@@ -122,33 +108,33 @@ $equiv_points = $show['equiv_points'];
             <div class="divider"></div>
             <div style="height: 50px;"></div>
             <!-- <div class="container"> -->
-                <div class="row">
+            <div class="row">
                 <div class="col s2"></div>
-                    <div class="col s8">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/<?php echo $picture; ?>">
-                                <!-- <span class="card-title">Card Title</span> -->
-                            </div>
-                            <div class="card-content">
-                                <div class="green-text" style="font-size: 20px;font-weight:600">
-                                <p>Reward Item: <?php echo $reward_item; ?></p>
-                                <p>Required Points: <?php echo $equiv_points* $claim_quantity; ?> </p>
-                                <p>Quantity: <?php echo $claim_quantity; ?></p>
-                                </div>
-                            </div>
-                            <form method="POST" action="">
-                            <div class="card-action center">
-                                <button class="btn waves-effect waves-light" type="submit" name="claimbtn">Claim Now
-                                    <i class="material-icons right">done_all</i>
-                                </button>
-                            </div>
-                            </form>
+                <div class="col s8">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="../images/<?php echo $picture; ?>">
+                            <!-- <span class="card-title">Card Title</span> -->
                         </div>
+                        <div class="card-content">
+                            <div class="green-text" style="font-size: 20px;font-weight:600">
+                                <p>Reward Item: <?php echo $reward_item; ?></p>
+                                <p>Required Points: <?php echo $equiv_points * $claim_quantity; ?> </p>
+                                <p>Quantity: <?php echo $claim_quantity; ?></p>
+                            </div>
+                        </div>
+                        <form method="POST" action="">
+                            <div class="card-action center">
+                                <!-- <button class="btn waves-effect waves-light" type="submit" name="claimbtn">Claim Now
+                                    <i class="material-icons right">done_all</i>
+                                </button> -->
+                            </div>
+                        </form>
                     </div>
-                    <div class="col s2"></div>
                 </div>
+                <div class="col s2"></div>
             </div>
+        </div>
         </div>
     </main>
 

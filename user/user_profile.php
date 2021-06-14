@@ -67,6 +67,7 @@ $photo = $show['photo'];
                             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
                             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
                             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+                            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
                             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
                             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="sign_up.php">Signup</a></li> -->
@@ -81,7 +82,7 @@ $photo = $show['photo'];
             <li style="font-weight: 600;"><a href="user_profile.php">Profile</a></li>
             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
-            <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
         </ul>
@@ -136,7 +137,7 @@ $photo = $show['photo'];
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix green-text text-green lighten-1">place</i>
                                                         <select disabled name="barangay" value="<?php echo $barangay; ?>" required>
-                                                            <option value="" disabled selected> <label for=""> Choose your Barangay</label></option>
+                                                            <option value="" disabled selected> <label for=""><?php echo $barangay; ?></label></option>
                                                             <option value="Anilao">Anilao</option>
                                                             <option value="Atlag">Atlag</option>
                                                             <option value="Babatnin">Babatnin</option>

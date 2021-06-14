@@ -36,6 +36,7 @@
                             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
                             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
                             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+                            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
                             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
                             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="sign_up.php">Signup</a></li> -->
@@ -51,6 +52,7 @@
             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
         </ul>

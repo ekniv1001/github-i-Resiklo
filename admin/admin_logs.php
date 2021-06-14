@@ -92,6 +92,7 @@ include "session.php";
                                     <td><?php echo $show2['first_name'] . ", " . $show2['last_name']; ?></td>
                                     <td><?php echo $show2['user_type']; ?></td>
                                     <td><?php echo $show['remarks']; ?></td>
+                                    <td>quantity</td>
                                     <td><?php echo $show['log_date']; ?></td>
 
                                 </tr>

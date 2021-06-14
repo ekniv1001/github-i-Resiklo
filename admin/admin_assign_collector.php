@@ -96,7 +96,7 @@ if (isset($_POST['searchbtn'])) {
         }
     </style>
 
-    <title>Logs</title>
+    <title>Assign Collector</title>
 
 </head>
 
@@ -158,7 +158,7 @@ if (isset($_POST['searchbtn'])) {
 
 
 
-                            <td><img src="../images/defaultimg.png" width="150px"></td>
+                            <td><img src="../images/<?php echo $show['photo']?>" width="150px"></td>
                             <td>
                                 <div class="row">
                                     <label>
@@ -192,7 +192,7 @@ if (isset($_POST['searchbtn'])) {
         </div>
         <br><br>
         <div class="container center">
-            <a href="admin_search_collector.php" class="btn waves-effect waves-light" type="submit" name="action">refresh
+            <a href="admin_assign_collector.php" class="btn waves-effect waves-light" type="submit" name="action">refresh
                 <i class="material-icons left">refresh</i>
             </a>
         </div>

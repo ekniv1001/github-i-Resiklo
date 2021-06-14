@@ -18,14 +18,14 @@ if ($result = $conn->query($sql)) {
 
         $_SESSION['status']         = 'Success';
         $_SESSION['status_code']    = 'success';
-        $_SESSION['status_message'] = 'Succesfully Activated!';
+        $_SESSION['status_message'] = 'Succesfully Activated! You may now Login';
         header("Location: /");
         exit();
     }
     else{
         $_SESSION['status']         = 'Error';
         $_SESSION['status_code']    = 'error';
-        $_SESSION['status_message'] = 'Whoops something went wrong!';
+        $_SESSION['status_message'] = 'Oops! something went wrong!';
         header("Location: /");
         exit();
     }

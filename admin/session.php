@@ -9,10 +9,12 @@ if(isset($_SESSION['id'])){
 }
 	else {
 
-		echo"<script> 
-	alert('Login First before entering the Page.')
-		window.location='../admin_login.php';</script>";
-	}
+        $_SESSION['status'] = 'Error';
+        $_SESSION['status_code'] = 'error';
+        $_SESSION['status_message'] = 'You must be logged in before accessing this page.';
+        header("Location: ../admin_login.php");
+        exit();
+    }
 
 ?>
 

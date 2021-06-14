@@ -1,12 +1,12 @@
-<?php 
+<?php
 
 include '../services/database_connection.php';
 
 
 $admin = "admin";
- $qry1 = "SELECT * FROM tbl_userinfo where user_type = '$admin'";
- $result1 = mysqli_query($conn, $qry1);
- while ($show = mysqli_fetch_array($result1)) {
+$qry1 = "SELECT * FROM tbl_userinfo where user_type = '$admin'";
+$result1 = mysqli_query($conn, $qry1);
+while ($show = mysqli_fetch_array($result1)) {
   $photo = $show['photo'];
   $first_name = $show['first_name'];
   $last_name = $show['last_name'];
@@ -80,12 +80,12 @@ $admin = "admin";
     </li>
   </ul>
   <li><a href="admin_assign_collector.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">assignment_ind</i>Assign Collector</a></li>
+  <li><a href="admin_confirm_voucher.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">confirmation_number</i>Voucher</a></li>
 
   <!-- <li><a href="admin_receive.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">edit_note</i>Receive Bottles</a></li> -->
-  <!-- <li><a href="admin_logs.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">history</i>Logs</a></li> -->
+  <li><a href="admin_logs.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">history</i>Logs</a></li>
   <li>
     <div class="divider"></div>
   </li>
   <li><a href="../admin/logout.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">logout</i>Logout</a></li>
 </ul>
-

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'services/database_connection.php';
 
 
@@ -19,7 +20,12 @@ if (isset($_POST['login'])) {
         $_SESSION['id'] = $row_admin['id'];
         header('location:collector/collector_home_view.php');
     } else {
-        echo "<script>alert('Invalid Username and Password')</script>";
+
+        $_SESSION['status'] = 'Error';
+        $_SESSION['status_code'] = 'error';
+        $_SESSION['status_message'] = 'Invalid Username or Password Please try again.';
+        header("Location: collector_login.php");
+        exit();
     }
 }
 
@@ -41,12 +47,19 @@ if (isset($_POST['login'])) {
     <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <title>i-Resiklo-Landing-Page</title>
 
 </head>
 
 <body>
+
+<script>
+    swal("Welcome to Collector's Page", "You must be assigned by admin to login on this page. If not just click home to login as user.");
+  </script>
+
     <header>
         <div class="navbar-fixed">
             <nav class="green lighten-1 z-depth-0" role="navigation">
@@ -265,7 +278,7 @@ if (isset($_POST['login'])) {
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="" method="POST" class="col s12 ">
+                    <form action="collector_login.php" method="POST" class="col s12 ">
                         <div class="row">
                             <div class="row">
                                 <div class="input-field col s10">
@@ -291,6 +304,9 @@ if (isset($_POST['login'])) {
                                 <button class="btn waves-effect waves-light green lighten-1" type="submit" name="login">Login
                                     <i class="material-icons right">login</i>
                                 </button>
+                                <div><br>
+                                    <a href="forgot_password.php">Forgot Password</a>
+                                </div>
                             </div><br>
                             <div class="divider"></div>
                             <div class="section"></div>
@@ -345,6 +361,24 @@ if (isset($_POST['login'])) {
                 }
             }
         </script>
+
+        <?php
+        if (isset($_SESSION['status'])) {
+
+        ?>
+            <script>
+                swal({
+                    title: "<?php echo $_SESSION['status']; ?>",
+                    text: "<?php echo $_SESSION['status_message']; ?>",
+                    icon: "<?php echo $_SESSION['status_code']; ?>",
+                });
+            </script>
+        <?php
+            unset($_SESSION['status']);
+            unset($_SESSION['status_message']);
+            unset($_SESSION['status_code']);
+        }
+        ?>
 
 
         <!-- Materialize Scripts -->

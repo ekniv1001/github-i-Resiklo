@@ -58,7 +58,7 @@ session_start();
                                 <form action="services/action_forgot_password.php" method="post">
                                     <div class="card">
                                         <div class="card-content">
-                                        <span class="card-title black-text">Forgot Password</span>
+                                        <span class="card-title green-text">Forgot Password</span>
                                             <div class="row">
                                                 <div class="input-field col s12">
                                                     <input placeholder="Enter Valid Email" id="email" name="email" type="email" class="validate" value="<?php echo !empty($_SESSION['old_request']['email'])&& isset($_SESSION['old_request']['email']) ? $_SESSION['old_request']['email']  : '' ; ?>">

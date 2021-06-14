@@ -20,7 +20,7 @@ if ($result = $conn -> query($sql)) {
             // $qry                        = mysqli_query($conn, $updateSql) or die(mysqli_error($conn));
             $_SESSION['status']         = 'Success';
             $_SESSION['status_code']    = 'success';
-            $_SESSION['status_message'] = '';
+            $_SESSION['status_message'] = 'Reset Code Verified! You may now reset your password';
             $_SESSION['old_request']    = $_POST;
             unset($_SESSION['old_request']);
             header("Location: /new_password.php?&user=".$_REQUEST['user']."&id=".$_REQUEST['id']."");
@@ -30,7 +30,7 @@ if ($result = $conn -> query($sql)) {
         {
             $_SESSION['status']         = 'Error';
             $_SESSION['status_code']    = 'error';
-            $_SESSION['status_message'] = 'Whoops Reset Code is not correct!';
+            $_SESSION['status_message'] = 'Oops! Invalid Reset Code!';
             $_SESSION['old_request']    = $_POST;
            
             header("Location: /reset_code.php?&user=".$_REQUEST['user']."&id=".$_REQUEST['id']."");
@@ -42,7 +42,7 @@ if ($result = $conn -> query($sql)) {
     else{
         $_SESSION['status']         = 'Error';
         $_SESSION['status_code']    = 'error';
-        $_SESSION['status_message'] = 'Whoops Something Went Wrong!';
+        $_SESSION['status_message'] = 'Oops! Something Went Wrong!';
         $_SESSION['old_request']    = $_POST;
         header("Location: /reset_code.php?&user=".$_REQUEST['user']."&id=".$_REQUEST['id']."");
         exit();

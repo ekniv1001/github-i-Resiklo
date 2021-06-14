@@ -48,7 +48,7 @@ if ($result = $conn -> query($sql)) {
             
             $_SESSION['status']         = 'Success';
             $_SESSION['status_code']    = 'success';
-            $_SESSION['status_message'] = 'We sent an reset code to your email!';
+            $_SESSION['status_message'] = 'We sent a password reset code to your email!';
             
             unset($_SESSION['old_request']);
             // header("Location: /reset_code.php?&user=".$user->email."&id=".$user->id."");
@@ -60,7 +60,7 @@ if ($result = $conn -> query($sql)) {
         } catch (Exception $e) {
                 $_SESSION['status']         = 'Error';
                 $_SESSION['status_code']    = 'error';
-                $_SESSION['status_message'] = 'Whoops Something went wrong!';
+                $_SESSION['status_message'] = 'Oops! Something went wrong!';
                 $_SESSION['old_request']    = $_POST;
                 header("Location: /forgot_password.php");
               exit();

@@ -18,13 +18,11 @@ if (isset($_POST['login'])) {
 
   if (mysqli_num_rows($run_admin) == 1) {
     // check if user is verified
-    if(!empty($row_admin['email_verified_at']))
-    {
+    if (!empty($row_admin['email_verified_at'])) {
       session_start();
       $_SESSION['id'] = $row_admin['id'];
       header('location:user/user_home_view.php');
-    }
-    else{
+    } else {
       $_SESSION['status'] = 'Error';
       $_SESSION['status_code'] = 'error';
       $_SESSION['status_message'] = 'Invalid Username or Password Please try again.';
@@ -52,6 +50,10 @@ if (isset($_POST['login'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

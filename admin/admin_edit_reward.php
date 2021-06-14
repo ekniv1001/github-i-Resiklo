@@ -104,6 +104,7 @@ while ($show = mysqli_fetch_array($result)) {
     $picture = $show['picture'];
     $reward_item = $show['reward_item'];
     $equiv_points = $show['equiv_points'];
+    $stock = $show['reward_stock'];
 }
 
 
@@ -183,6 +184,17 @@ while ($show = mysqli_fetch_array($result)) {
                                 <input id="points" type="number" name="equiv_points" class="validate" value="<?php echo $equiv_points; ?>">
                                 <label for="points">Points</label>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="points" type="number" name="reward_stock" class="validate" value="<?php echo $stock; ?>" disabled>
+                                <label for="points">Stocks</label>
+
+      </div>
+                      
+                             
+
                         </div>
                         <div class="file-field input-field">
                             <div class="btn">

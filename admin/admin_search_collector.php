@@ -71,7 +71,7 @@ if (isset($_POST['search'])) {
         }
     </style>
 
-    <title>Logs</title>
+    <title>Search Collector</title>
 
 </head>
 

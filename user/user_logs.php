@@ -1,8 +1,8 @@
-<?php include "session.php";
-
-
-
+<?php
+include "session.php";
+include '../services/database_connection.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,18 +20,15 @@
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
 
-    <title>User Page</title>
+    <title>History</title>
 
 </head>
 
 
 <body>
-    <?php include "sessionbody.php"; 
-
-
-
-
-    ?>
+ <?php
+  include "sessionbody.php";
+   ?> 
     <header>
         <div class="navbar-fixed">
             <nav class="green lighten-1 z-depth-0" role="navigation">
@@ -67,71 +64,133 @@
         </ul>
     </header>
 
-    <?php
-
-
-
-
-    $user_id = $row['id'];
-    $claim_status = "claimed";
-    $qry = "SELECT * FROM tbl_claim where claim_user_id = '$user_id' and claim_status !=  '$claim_status' ";
-    $result = mysqli_query($conn, $qry);
-
-
-    ?>
-
     <main>
         <div class="container">
-            <h2 class="green-text">Available Voucher</h2>
-        </div>
-        <div class="container">
-            <table class="centered">
+        <h2 class="green-text">Points and Rewards</h2>
+        <div class="divider"></div><br>
+            <div class="card-panel teal lighten-2">
+                <strong class="white-text">RECEIVED POINTS</strong>
+            </div>
+            <table>
                 <thead>
                     <tr>
-                        <th>Item</th>
-                        <th>Item Name</th>
-                        <th>Quantity</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Collectors Name</th>
+                        <th>Points Received</th>
+                        <th>Date Received</th>
                     </tr>
                 </thead>
-
                 <tbody>
 
 
-                    <?php
-                    while ($show = mysqli_fetch_array($result)) {
-                        $reward_id = $show['claim_reward_id'];
-                        $reward_quantity = $show['claim_quantity'];
+<?php 
+$user_id = isset($id) ? $id : '';
+$qry1 = "SELECT * FROM tbl_summary where user_id = '$user_id'";
+          $result1 = mysqli_query($conn, $qry1);
+          while ($show1 = mysqli_fetch_array($result1)) {
+                $collector_id = $show1['collector_id'];
 
-                        $qry1 = "SELECT * FROM tbl_rewards where id_reward = '$reward_id'";
-                        $result1 = mysqli_query($conn, $qry1);
-                        while ($show1 = mysqli_fetch_array($result1)) {
 
-                    ?>
+$qry2 = "SELECT * FROM tbl_userinfo where id = '$collector_id'";
+          $result2 = mysqli_query($conn, $qry2);
+          while ($show2 = mysqli_fetch_array($result2)) {
 
-                            <tr>
 
-                                <td><img src="../images/<?php echo $show1['picture']; ?> " width=100px;></td>
-                                <td><?php echo $show1['reward_item']; ?> </td>
-                                <td><?php echo $reward_quantity; ?></td>
 
-                                <td><?php echo $show['claim_status']; ?></td>
-                                <td>
+ ?>
 
-                                    <a href="user_claim.php?claim_id=<?php echo $show['claim_id']; ?>" class="waves-effect waves-light btn"><i class="material-icons right">send</i>show</a>
-                                </td>
-                            </tr>
+
+                    <tr>
+                        <td><?php echo $show2['last_name'].", ".$show2['first_name']; ?></td>
+
+
+
+<?php } ?>
+
+                        <td><?php echo $show1['points_added']; ?></td>
+                        <td><?php echo $show1['date_added']; ?></td>
+                    </tr>
+
+
+
+<?php } ?>
+
+
+
+
+
+
                 </tbody>
 
-        <?php }
-                    } ?>
+
+
+
+
+
+
+
+
 
             </table>
-        </div>
+<div style="height: 100px;"></div>
+            <div class="card-panel teal lighten-2">
+                <strong class="white-text">CLAIMED REWARDS</strong>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reward Item</th>
+                        <th>Quantity</th>
+                        <th>Equivalent Points</th>
+                        <th>Date Claimed</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+
+<?php 
+
+  $claim_status = "claimed";
+          $qry1 = "SELECT * FROM tbl_claim where claim_status = '$claim_status' and claim_user_id = '$user_id'";
+          $result1 = mysqli_query($conn, $qry1);
+          while ($show1 = mysqli_fetch_array($result1)) {
+            $reward_id = $show1['claim_reward_id'];
+
+
+ $qry3 = "SELECT * FROM tbl_rewards where id_reward = '$reward_id'";
+                $result3 = mysqli_query($conn, $qry3);
+                while ($show3 = mysqli_fetch_array($result3)) {
+
+ ?>
+                    <tr>
+                        <td><?php echo $show3['reward_item'];  ?></td>
+
+
+
+                     <td><?php echo $show1['claim_quantity']; ?></td>
+
+
+
+                        <td><?php echo (int)($show1['claim_quantity']) * (int)($show3['equiv_points']); ?></td>
+
+<?php } ?>
+
+                        <td><?php echo $show1['claim_date']; ?></td>
+                    </tr>
+
+
+
+<?php } ?>
+
+                </tbody>
+            </table>
+        </div>
     </main>
-    <div style="height: 250px;"></div>
+
+
+
+
+
+    <div style="height: 200px;"></div>
     <footer>
         <?php
         include '../components/footer.php';

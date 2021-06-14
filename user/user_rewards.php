@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "session.php";
 include '../services/database_connection.php';
 ?>
@@ -19,6 +19,7 @@ include '../services/database_connection.php';
     <link type="text/css" rel="stylesheet" href="../css/materialize.css" media="screen,projection" />
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <title>User Page</title>
 
@@ -26,7 +27,7 @@ include '../services/database_connection.php';
 
 
 <body>
-    <?php include "sessionbody.php";?>
+    <?php include "sessionbody.php"; ?>
     <header>
         <div class="navbar-fixed">
             <nav class="green lighten-1 z-depth-0" role="navigation">
@@ -40,6 +41,7 @@ include '../services/database_connection.php';
                             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
                             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
                             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+                            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
                             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
                             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="sign_up.php">Signup</a></li> -->
@@ -55,12 +57,13 @@ include '../services/database_connection.php';
             <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
             <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
             <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
+            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
             <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
         </ul>
     </header>
     <?php
-$active = "active";
+    $active = "active";
     $qry = "SELECT * FROM tbl_rewards where status ='$active' ";
     $result = mysqli_query($conn, $qry);
 
@@ -112,61 +115,81 @@ $active = "active";
 
     ?>
 
-<main><br>
+    <main><br>
 
-    <div class="container">
-        <div class="card-panel green lighten-1">
-            <h2 class="white-text center">Available Rewards List</h2>
+        <div class="container">
+            <div class="card-panel green lighten-1">
+                <h2 class="white-text center">List of Available Rewards</h2>
+            </div>
+            <h4 class="orange-text">My Point(s): <?php echo $row['points']; ?> </h4>
+            <div class="divider"></div>
         </div>
-        <h4 class="orange-text">My Point(s): <?php echo $row['points']; ?> </h4>
-        <div class="divider"></div>
-    </div>
-    <div class="container">
-        <!-- <div class="container"> -->
-        <div class="row">
-            <?php
+        <div class="container">
+            <!-- <div class="container"> -->
+            <div class="row">
+                <?php
 
-            while ($show = mysqli_fetch_array($result)) {
+                while ($show = mysqli_fetch_array($result)) {
 
 
 
-            ?>
+                ?>
 
-                <form method="POST" action="">
-                    <div class="col s12 m6 l4">
-                        <div class="medium card">
-                            <div class="card-image">
-                                <img src="../images/<?php echo $show['picture']; ?>" height=150px>
-                            </div>
-                            <div class="card-content">
+                    <form method="POST" action="">
+                        <div class="col s12 m6 l4">
+                            <div class="medium card">
+                                <div class="card-image">
+                                    <img src="../images/<?php echo $show['picture']; ?>" height=150px>
+                                </div>
+                                <div class="card-content">
+                                    <p class="grey-text">Available Stock: <strong><?php echo $show['reward_stock']; ?></strong></p>
+                                    <h5 class="green-text text-green-lighten-1"><strong><?php echo $show['reward_item']; ?></strong></h5>
+                                    <p class="orange-text"><strong>Points: <?php echo $show['equiv_points']; ?> </strong></p>
+                                </div>
+                                <div class="card-action center">
+                                    <input type="text" name="user_id" value="<?php echo isset($id) ? $id : '' ?>" hidden>
+                                    <input type="text" name="reward_points" value="<?php echo $row['points']; ?>" hidden>
+                                    <input type="text" name="equiv_points" value="<?php echo $show['equiv_points']; ?>" hidden>
+                                    <input type="text" name="reward_id" value="<?php echo $show['id_reward']; ?> " hidden>
+                                    <input class="green-text" type="number" name="quantity" value="<?php echo 0 ?>" style="text-align: center; font-size: 30px;">
 
-                                <h5 class="green-text text-green-lighten-1"><strong><?php echo $show['reward_item']; ?></strong></h5>
-                                <p class="orange-text"><strong>Points: <?php echo $show['equiv_points']; ?> </strong></p>
-                            </div>
-                            <div class="card-action center">
-                                <input type="text" name="user_id" value="<?php echo isset($id) ? $id : '' ?>" hidden>
-                                <input type="text" name="reward_points" value="<?php echo $row['points']; ?>" hidden>
-                                <input type="text" name="equiv_points" value="<?php echo $show['equiv_points']; ?>" hidden>
-                                <input type="text" name="reward_id" value="<?php echo $show['id_reward']; ?> " hidden>
-                                <input class="green-text" type="number" name="quantity" value="<?php echo 0 ?>" style="text-align: center; font-size: 30px;">
-
-                                <!-- <button type="submit" name="claimbtn"><a class="waves-effect waves-light btn ">Claim Now</a></button> -->
+                                    <!-- <button type="submit" name="claimbtn"><a class="waves-effect waves-light btn ">Claim Now</a></button> -->
 
 
-                                <button class="btn waves-effect waves-light" type="submit" name="claimbtn">claim now
-                                    <i class="material-icons right">send</i>
-                                </button>
+<?php if($show['reward_stock'] <= 0 ){ ?>
+
+
+   <button class="btn waves-effect waves-light" type="submit" name="claimbtn" disabled="">claim now
+                                        <i class="material-icons right">send</i>
+                                    </button>
+
+
+
+    <?php
+
+}else{ ?>
+
+
+
+
+                                    <button class="btn waves-effect waves-light" type="submit" name="claimbtn">claim now
+                                        <i class="material-icons right">send</i>
+                                    </button>
+<?php } ?>
+
+
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-            <?php } ?>
-
+                <?php } ?>
 
 
-            <!-- Modal Structure -->
-            <!-- 
+
+                <!-- Modal Structure -->
+                <!-- 
                 <form action="" method="POST">
                     <div id="modal1" class="modal">
                         <div class="modal-content">
@@ -206,10 +229,30 @@ $active = "active";
         </div>
     </div>
     </form> -->
-</main>
+    </main>
 
-<footer>
-    <?php
-    include '../components/footer.php';
+<script>
+<?php
+    if (isset($_SESSION['status'])) {
+
     ?>
-</footer>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status']; ?>",
+                text: "<?php echo $_SESSION['status_message']; ?>",
+                icon: "<?php echo $_SESSION['status_code']; ?>",
+            });
+        </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_message']);
+        unset($_SESSION['status_code']);
+    }
+    ?>
+
+</script>
+    <footer>
+        <?php
+        include '../components/footer.php';
+        ?>
+    </footer>

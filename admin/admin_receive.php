@@ -106,7 +106,7 @@ if (isset($_POST['updatebtn'])) {
         }
     </style>
 
-    <title>Logs</title>
+    <title>Receive Collection</title>
 
 </head>
 
