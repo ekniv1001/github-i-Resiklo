@@ -85,7 +85,7 @@
                 <div class="col s12 m4 l4 center align">
                     <div class="card hoverable">
                         <div class="card-image">
-                            <img src="../images/env1.jpg">
+                            <img src="../images/clean.jpg">
                             <span class="card-title green-text text-darken-1"> <strong>Achievements</strong></span>
                         </div>
                         <div class="card-content">
@@ -101,7 +101,7 @@
                 <div class="col s12 m4 l4 center align">
                     <div class="card hoverable">
                         <div class="card-image">
-                            <img src="../images/env2.jpg">
+                            <img src="../images/3planting.jpg">
                             <span class="card-title green-text text-darken-1"> <strong>IEC Campaign</strong></span>
                         </div>
                         <div class="card-content">
@@ -117,7 +117,7 @@
                 <div class="col s12 m4 l4 center align">
                     <div class="card hoverable">
                         <div class="card-image">
-                            <img src="../images/3r.jpg">
+                            <img src="../images/walis.jpg">
                             <span class="card-title green-text text-darken-1"> <strong>Events</strong></span>
                         </div>
                         <div class="card-content">
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col s12 m6">
                         <div class="icon-block">
-                            <img class="responsive-img" src="../images/3r.jpg" alt="">
+                            <img class="responsive-img" src="../images/bins.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                 <div class="row" id="about">
                     <div class="col s12 m6">
                         <div class="icon-block">
-                            <img class="responsive-img" src="../images/planting.jpg" alt="">
+                            <img class="responsive-img" src="../images/3planting.jpg" alt="">
                         </div>
                     </div>
                     <div class="col s12 m6 about-text">
@@ -206,7 +206,7 @@
 
         <div class="parallax-container">
             <div class="parallax">
-                <img src="../images/env1.jpg" alt="" class="responsive-img">
+                <img src="../images/mission.jpg" alt="" class="responsive-img">
             </div>
         </div>
 
@@ -230,19 +230,17 @@
                 <div class="header">
                     <h3 class="green-text text-lighten-2">About</h3>
                 </div>
-                <p style="text-indent: 50px;" class="light flow-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Unde error aliquid reprehenderit quasi quibusdam
-                    nulla natus dignssimus cum, dicta quos excepturi voluptatem tenetur ex expedita illum beatae
-                    esse ipsum ipsa tempore ullam libero fuga. Tempora, repudiandae, deserunt commodi quae, inventore error
-                    similique dicta nisi saepe quibusdam beatae doloremque odit animi eum necessitatibus eligendi?</p>
+                <p style="text-indent: 50px;" class="light flow-text">City Environment& Natural Resources Office (CENRO)
+                    Responsible for enforcing RA 9003 or Ecological Solid Waste Management Act of 2000” and facilitate the drawing up of a Solid Waste Management Plan.
+                    Supervise day to day SWM Program operation and maintenance of City of Malolos Ecological Farm (CMEF)</p>
             </div>
         </div>
 
         <div class="parallax-container">
-            <div class="parallax">
-                <img src="../images/env3.jpg" alt="" class="responsive-img">
-            </div>
+        <div class="parallax">
+            <img src="../images/linis.jpg" alt="" class="responsive-img">
         </div>
+    </div>
 
         <br><br>
     </main>
@@ -250,6 +248,8 @@
     <footer>
         <?php include('../components/footer.php'); ?>
     </footer>
+
+
 </body>
 
 </html>

@@ -26,7 +26,7 @@
 
 
 <body>
-    <?php include "sessionbody.php"; 
+    <?php include "sessionbody.php";
 
 
 
@@ -130,8 +130,22 @@
             </table>
         </div>
 
+
+        <div style="height: 400px;"></div>
+        <div class="container">
+            <div class="divider"></div><br>
+            <div class="grey-text">
+                <h6><strong>Instruction: How to claim your reward(s)?</strong></h6>
+                <ul>
+                    <li>1. You must be a citizen of Malolos</li>
+                    <li>2. Present claim voucher above to the respective person @ CENRO Malolos</li>
+                    <li>3. Please bring any valid ID to verify that you are a citizen of Malolos.</li>
+                    
+                </ul>
+            </div>
+        </div>
+
     </main>
-    <div style="height: 250px;"></div>
     <footer>
         <?php
         include '../components/footer.php';
