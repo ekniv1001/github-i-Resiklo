@@ -1,6 +1,6 @@
 <?php
-include "session.php";
-include "../services/action_achievements.php";
+
+include "services/action_achievements.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,25 +23,16 @@ include "../services/action_achievements.php";
 </head>
 
 <body>
-    <?php
-    include "sessionbody.php";
-
-    ?>
     <header>
         <div class="navbar-fixed">
             <nav class="green lighten-1 z-depth-0" role="navigation">
                 <div class="container">
                     <div class="nav-wrapper">
-                        <a href="collector_home_view.php" class="brand-logo" style="font-weight: 600;">i-Resiklo</a>
+                        <a href="index.php" class="brand-logo" style="font-weight: 600;">i-Resiklo</a>
                         <a href="#" data-target="mobile-ver" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li style="font-weight: 600;"><a href="user_home_view.php">Home</a></li>
-                            <li style="font-weight: 600;"><a href="user_profile.php">Profile</a></li>
-                            <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
-                            <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
-                            <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
-                            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
-                            <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
+                            <li style="font-weight: 600;"><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
+                            <!-- <li style="font-weight: 600;"><a href="#about">About</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="sign_up.php">Signup</a></li> -->
                         </ul>
@@ -51,21 +42,16 @@ include "../services/action_achievements.php";
         </div>
 
         <ul class="sidenav" id="mobile-ver">
-            <li style="font-weight: 600;"><a href="user_home_view.php">Home</a></li>
-            <li style="font-weight: 600;"><a href="user_profile.php">Profile</a></li>
-            <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
-            <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
-            <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
-            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
-            <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
+            <li style="font-weight: 600;"><a href="index.php">Home</a></li>
+            <!-- <li style="font-weight: 600;"><a href="#about">About</a></li> -->
             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
         </ul>
     </header>
 
     <main>
         <div class="container">
-            <div class="green-text left">
-                <h3><strong><em>"Read more about our Achievements"</em></strong></h3>
+            <div class="green-text center">
+                <h2><strong><em>"Read more about our Achievements"</em></strong></h2>
                 <div class="divider"></div>
                 <br><br><br>
             </div>

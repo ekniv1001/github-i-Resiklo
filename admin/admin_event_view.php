@@ -1,6 +1,6 @@
 <?php
 // include "../services/database_connection.php";
-include "../services/action_achievements.php";
+include "../services/action_event.php";
 ?>
 
 
@@ -36,7 +36,7 @@ include "../services/action_achievements.php";
         }
     </style>
 
-    <title>View Achievement</title>
+    <title>Upcoming Events</title>
 
 </head>
 
@@ -47,7 +47,7 @@ include "../services/action_achievements.php";
             <nav class="green lighten-1 z-depth-0" role="navigation">
                 <div class="container">
                     <div class="nav-wrapper">
-                        <a href="index.php" class="brand-logo" style="font-weight: 600;"> <em>Achievement</em></a>
+                        <a href="index.php" class="brand-logo" style="font-weight: 600;"> <em>Event</em></a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     </div>
                 </div>
@@ -71,8 +71,9 @@ include "../services/action_achievements.php";
                                 <img src="../uploads/<?php echo $event['event_img']; ?>" height="400px">
                                 <!-- <span class="card-title">Card Title</span> -->
                             </div>
-                            <div class="card-content">
+                            <div class="card-content grey-text">
                                 <h1><em><?php echo $event['event_title']; ?></em></h1>
+                                <h6><em><?php echo $event['event_date'] . ", Time: " . $event['event_time'] . ", @ " . $event['event_setting']; ?></em></h6>
                                 <p class="flow-text"><?php echo $event['event_content']; ?></p>
                                 <div class="divider"></div>
                                 <div class="section">

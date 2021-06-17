@@ -134,7 +134,7 @@ while ($show4 = mysqli_fetch_array($result4)) {
         <div class="card-panel teal lighten-2">
           <strong class="white-text">USER LIST</strong>
         </div>
-        <table class="centered">
+        <table class="centered striped">
           <thead>
             <tr>
               <th>Name of User</th>
@@ -167,7 +167,7 @@ while ($show4 = mysqli_fetch_array($result4)) {
         <div class="card-panel teal lighten-2">
           <strong class="white-text">COLLECTOR LIST</strong>
         </div>
-        <table class="centered">
+        <table class="centered striped">
           <thead>
             <tr>
               <th>Collectors Name</th>
@@ -231,7 +231,7 @@ while ($show4 = mysqli_fetch_array($result4)) {
         <div class="card-panel teal lighten-2">
           <strong class="white-text">LIST OF CLAIMED REWARDS</strong>
         </div>
-        <table class="centered">
+        <table class="centered striped">
           <thead>
             <tr>
               <th>User's Name</th>

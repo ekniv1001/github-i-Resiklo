@@ -30,7 +30,7 @@ if (isset($_POST['assignbtn'])) {
 
 ?>
     <script>
-        const answer = confirm("Are you want to promoted this user to collector?");
+        const answer = confirm("This User will be assign as Collector. Do you want to proceed?");
         if (answer == true) {
 
             window.location.href = 'admin_assign_collector_action.php?user_id=<?php echo $user_id; ?>'

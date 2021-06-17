@@ -83,7 +83,7 @@ while ($show = mysqli_fetch_array($result1)) {
   <li><a href="admin_confirm_voucher.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">confirmation_number</i>Voucher</a></li>
 
   <!-- <li><a href="admin_receive.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">edit_note</i>Receive Bottles</a></li> -->
-  <li><a href="admin_logs.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">history</i>Logs</a></li>
+  <li><a href="admin_logs.php" class="waves-effect waves-green lighten-1 green-text text-green lighten-1"><i class="material-icons green-text text-green lighten-1">history</i>Collected</a></li>
   <li>
     <div class="divider"></div>
   </li>

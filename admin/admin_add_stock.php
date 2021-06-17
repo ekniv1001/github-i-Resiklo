@@ -8,46 +8,46 @@ $stock = $_GET['stock'];
 
 
 
-  
 
 
 
 
 
 
-if(isset($_POST['submitbtn'])){
-$add_stock = $_POST['add_stock'];
+
+if (isset($_POST['submitbtn'])) {
+    $add_stock = $_POST['add_stock'];
 
 
 
-if($add_stock <= 0){
+    if ($add_stock <= 0) {
 ?>
 
-<script>
-    alert("Invalid Number");
-</script>
+        <script>
+            alert("Invalid Number");
+        </script>
+    <?php
+
+
+    } else {
+
+
+
+
+        $newstock = (int)($add_stock) + (int)($stock);
+
+        $query = "UPDATE tbl_rewards SET reward_stock = '$newstock' where id_reward = '$reward_id'";
+        $result = mysqli_query($conn, $query);
+    ?>
+
+        <script>
+            alert("Stock successfully added");
+            window.location.href = 'admin_rewards.php';
+        </script>
 <?php
 
 
-}else{
-
-
-
-
-$newstock = (int)($add_stock) + (int)($stock);
-
-$query = "UPDATE tbl_rewards SET reward_stock = '$newstock' where id_reward = '$reward_id'";
-   $result = mysqli_query($conn, $query);
-?>
-
-<script>
-    alert("Stock successfully added");
-    window.location.href='admin_rewards.php';
-</script>
-<?php
-
-
-}
+    }
 }
 
 ?>
@@ -113,16 +113,24 @@ $query = "UPDATE tbl_rewards SET reward_stock = '$newstock' where id_reward = '$
 
     <main>
         <div class="container">
-            <h4>Add stock</h4>
-            <form action="" method="POST">
-                <div class="input-field col s6">
-                    <input  type="number" name="add_stock" class="validate">
-                    <label for="last_name">Add Stock</label>
+            <div class="container"><br><br><br>
+                <div class="green lighten-5">
+                    <div style="padding: 20px;">
+                        <h4 class="green-text">Add stock</h4>
+                        <form action="" method="POST">
+                            <div class="input-field col s6">
+                                <input type="number" name="add_stock" class="validate" required>
+                                <label for="last_name">Add Stock</label>
+                            </div>
+                            <div class="center">
+                                <button class="btn waves-effect waves-light" type="submit" name="submitbtn">Submit
+                                    <i class="material-icons right">save</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="submitbtn">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+            </div>
         </div>
     </main>
 

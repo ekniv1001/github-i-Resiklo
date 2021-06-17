@@ -2,6 +2,16 @@
 // include "../services/database_connection.php";
 include "../services/action_posts.php";
 include "session.php";
+
+
+
+
+
+
+
+$sql = "SELECT * FROM tbl_collected";
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 
@@ -37,7 +47,7 @@ include "session.php";
         }
     </style>
 
-    <title>Logs</title>
+    <title>Received History</title>
 
 </head>
 
@@ -48,7 +58,7 @@ include "session.php";
             <nav class="green lighten-1 z-depth-0" role="navigation">
                 <div class="container">
                     <div class="nav-wrapper">
-                        <a href="index.php" class="brand-logo" style="font-weight: 600;"> <em>Logs</em></a>
+                        <a href="index.php" class="brand-logo" style="font-weight: 600;"> <em>Received</em></a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     </div>
                 </div>
@@ -60,65 +70,32 @@ include "session.php";
     <main>
         <div class="container">
             <div class="card-panel teal lighten-2">
-                <strong class="white-text">History</strong>
+                <strong class="white-text">Received History</strong>
             </div>
-            <table class="centered">
+
+            <table class="centered striped">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>User Type</th>
-                        <th>Remarks</th>
                         <th>Quantity</th>
                         <th>Date</th>
-
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
 
-                    $qry1 = "SELECT * FROM tbl_logs";
-                    $result1 = mysqli_query($conn, $qry1);
-                    while ($show = mysqli_fetch_array($result1)) {
+                    while ($show = mysqli_fetch_array($result)) {
+                    ?>
 
-                        if ($show['remarks'] == "received") {
-                            $collector_id = $show['collector_id'];
-                            $user_id = $show['user_id'];
-
-                            $qry2 = "SELECT * FROM tbl_userinfo where id = '$collector_id'";
-                            $result2 = mysqli_query($conn, $qry2);
-                            while ($show2 = mysqli_fetch_array($result2)) { ?>
-                                <tr>
-                                    <td><?php echo $show2['first_name'] . ", " . $show2['last_name']; ?></td>
-                                    <td><?php echo $show2['user_type']; ?></td>
-                                    <td><?php echo $show['remarks']; ?></td>
-                                    <td>quantity</td>
-                                    <td><?php echo $show['log_date']; ?></td>
-
-                                </tr>
-                            <?php
-                            }
-                        } else {
+                        <tr>
+                            <td><?php echo $show['collector_fname'] . ", " . $show['collector_lname']; ?></td>                     
+                            <td><?php echo $show['collect_quantity']; ?></td>
+                            <td><?php echo $show['collect_date']; ?></td>
+                        </tr>
 
 
-
-                            $qry3 = "SELECT * FROM tbl_userinfo where id = '$user_id'";
-                            $result3 = mysqli_query($conn, $qry3);
-                            while ($show3 = mysqli_fetch_array($result3)) { ?>
-                                <tr>
-                                    <td><?php echo $show3['first_name'] . ", " . $show3['last_name']; ?></td>
-                                    <td><?php echo $show3['user_type']; ?></td>
-                                    <td><?php echo $show['remarks']; ?></td>
-                                    <td><?php echo $show['log_date']; ?></td>
-
-                                </tr>
-
-
-                    <?php }
-                        }
-                    } ?>
-
-
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

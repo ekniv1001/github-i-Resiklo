@@ -11,6 +11,7 @@ $result1 = mysqli_query($conn, $qry1);
 while ($show = mysqli_fetch_array($result1)) {
     $first_name = $show['first_name'];
     $last_name = $show['last_name'];
+    $photo = $show['photo'];
     $balance = $show['points'];
 }
 
@@ -31,7 +32,7 @@ while ($show = mysqli_fetch_array($result1)) {
 if (isset($_POST['updatebtn'])) {
     $add_points = $_POST['add_points'];
     $total_points = ((int)$add_points) * ((int)$points);
-$collector_id = $_POST['collector_id'];
+    $collector_id = $_POST['collector_id'];
 
 
 
@@ -127,7 +128,7 @@ $collector_id = $_POST['collector_id'];
                     <div class="card-panel grey lighten-5 z-depth-1">
                         <div class="row valign-wrapper">
                             <div class="col s2">
-                                <img src="../images/defaultimg.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                                <img src="../images/<?php echo $photo; ?>" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
                             </div>
                             <div class="col s5 center">
                                 <span class="green-text">
@@ -154,7 +155,7 @@ $collector_id = $_POST['collector_id'];
                 <div class="col s3"></div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix green-text text-green lighten-1">tag</i>
-                   
+
                     <input class="blue-text" id="add_points" type="number" name="add_points" style="text-align: center; font-size: 30px;" class="validate" required="" value="<?php echo $add_points; ?>">
                     <label for="add_points">Enter Number of Plastic Bottles</label><br><br>
                     <div class="center">

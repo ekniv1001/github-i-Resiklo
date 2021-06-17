@@ -20,7 +20,7 @@ include "../services/action_achievements.php";
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
 
-    <title>Collector Page</title>
+    <title>Achievements</title>
 
 </head>
 

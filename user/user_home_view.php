@@ -1,4 +1,4 @@
-<?php include "session.php";?>
+<?php include "session.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@
 
 
 <body>
-    <?php include "sessionbody.php";?>
+    <?php include "sessionbody.php"; ?>
     <header>
         <div class="navbar-fixed">
             <nav class="green lighten-1 z-depth-0" role="navigation">
@@ -62,10 +62,13 @@
         <section class="slider">
             <ul class="slides">
                 <li>
-                    <img class="responsive-img" src="../images/env2.jpg">
+                    <img class="responsive-img" src="../images/bgc.jpg">
                     <div class="caption left-align">
-                        <h1 class="bold">CENRO Malolos</h1>
+                        <h1 class="bold">CENRO MALOLOS</h1>
                         <h5 class="bold">City Environment and Natural Resources Office.</h5>
+                        <div style="height: 200px; width:200px" class="center">
+                            <img src="../images/logo.png" alt="">
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -73,7 +76,7 @@
 
         <main>
             <div class="container center">
-                <h2 class="bold green-text text-lighten-1 hr-line">What's New               
+                <h2 class="bold green-text text-lighten-1 hr-line">What's New
                 </h2>
             </div>
             <!-- <div class="container"> -->
@@ -121,7 +124,7 @@
                             <h5 class="light grey-text text-darken-1">Joint and be more active in our upcoming events</h5>
                         </div>
                         <div class="card-action">
-                            <a href="#">UPCOMING EVENTS</a>
+                            <a href="user_event.php">UPCOMING EVENTS</a>
                             <!-- <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a> -->
                         </div>
                     </div>

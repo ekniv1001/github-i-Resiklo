@@ -1,6 +1,6 @@
 <?php
 // include "../services/database_connection.php";
-include "../services/action_achievements.php";
+include "../services/action_event.php";
 include "session.php";
 ?>
 
@@ -37,7 +37,7 @@ include "session.php";
         }
     </style>
 
-    <title>Edit Achievement</title>
+    <title>Edit Event</title>
 
 </head>
 
@@ -61,22 +61,43 @@ include "session.php";
 
     <main><br>
         <div class="container">
-            <?php foreach ($query as $achieve) { ?>
+            <?php foreach ($query as $event) { ?>
                 <div class="row">
                     <form method="POST" class="col s12">
                         <div class="row">
-                            <input type="text" hidden value='<?php echo $achieve['achieve_id'] ?>' name="achieve_id">
+                            <input type="text" hidden value='<?php echo $achieve['event_id'] ?>' name="event_id">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix green-text text-green lighten-1">title</i>
-                                <input id="title" type="text" name="achieve_title" value="<?php echo $achieve['achieve_title'] ?>" class="validate">
-                                <label for="title">Achievement Title</label>
+                                <input id="title" type="text" name="event_title" value="<?php echo $event['event_title'] ?>" class="validate">
+                                <label for="title">Event Title</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix green-text text-green lighten-1">article</i>
-                                <textarea id="content" name="achieve_content" class="materialize-textarea"><?php echo $achieve['achieve_content'] ?></textarea>
-                                <label for="content">Achievement Content</label>
+                                <textarea id="content" name="event_content" class="materialize-textarea"><?php echo $event['event_content'] ?></textarea>
+                                <label for="content">Event Content</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix green-text text-green lighten-1">place</i>
+                                <input id="palce" type="text" name="event_setting" value="<?php echo $event['event_setting'] ?>" class="validate" required>
+                                <label for="place">Event Setting</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix green-text text-green lighten-1">event</i>
+                                <input id="event_date" type="text" name="event_date" tabindex="-1" class="datepicker" value="<?php echo $event['event_date'] ?>" required>
+                                <label for="event_date">Event Date</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix green-text text-green lighten-1">timer</i>
+                                <input id="time" type="text" name="event_time" tabindex="-1" class="timepicker" value="<?php echo $event['event_time'] ?>" required>
+                                <label for="time">Event Time</label>
                             </div>
                         </div>
                         <div class="center">
@@ -89,7 +110,7 @@ include "session.php";
         </div>
     </main>
 
-<div style="height: 200px;"></div>
+    <div style="height: 200px;"></div>
     <footer class="page-footer green lighten-1">
         <div class="container">
             <div class="row">

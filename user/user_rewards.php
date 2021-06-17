@@ -101,7 +101,7 @@ include '../services/database_connection.php';
             ?>
 
                 <script>
-                    const answer = confirm("Are you sure you want to claim this item?");
+                    const answer = confirm("Are you sure you want to request a voucher for this item?");
                     if (answer == true) {
                         window.location.href = '../services/action_claim.php?reward_quantity=<?php echo $reward_quantity; ?>&reward_id=<?php echo $reward_id; ?>&remaining_point=<?php echo $remaining_point; ?>&user_id=<?php echo $user_id; ?>';
                     }
@@ -156,26 +156,26 @@ include '../services/database_connection.php';
                                     <!-- <button type="submit" name="claimbtn"><a class="waves-effect waves-light btn ">Claim Now</a></button> -->
 
 
-<?php if($show['reward_stock'] <= 0 ){ ?>
+                                    <?php if ($show['reward_stock'] <= 0) { ?>
 
 
-   <button class="btn waves-effect waves-light" type="submit" name="claimbtn" disabled="">claim now
-                                        <i class="material-icons right">send</i>
-                                    </button>
-
-
-
-    <?php
-
-}else{ ?>
+                                        <button class="btn waves-effect waves-light" type="submit" name="claimbtn" disabled="">request
+                                            <i class="material-icons right">send</i>
+                                        </button>
 
 
 
+                                    <?php
 
-                                    <button class="btn waves-effect waves-light" type="submit" name="claimbtn">claim now
-                                        <i class="material-icons right">send</i>
-                                    </button>
-<?php } ?>
+                                    } else { ?>
+
+
+
+
+                                        <button class="btn waves-effect waves-light" type="submit" name="claimbtn">request
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    <?php } ?>
 
 
 
@@ -231,28 +231,29 @@ include '../services/database_connection.php';
     </form> -->
     </main>
 
-<script>
-<?php
-    if (isset($_SESSION['status'])) {
+    <script>
+        <?php
+        if (isset($_SESSION['status'])) {
 
-    ?>
-        <script>
-            swal({
-                title: "<?php echo $_SESSION['status']; ?>",
-                text: "<?php echo $_SESSION['status_message']; ?>",
-                icon: "<?php echo $_SESSION['status_code']; ?>",
-            });
-        </script>
-    <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['status_message']);
-        unset($_SESSION['status_code']);
-    }
-    ?>
+        ?>
+                <
+                script >
+                swal({
+                    title: "<?php echo $_SESSION['status']; ?>",
+                    text: "<?php echo $_SESSION['status_message']; ?>",
+                    icon: "<?php echo $_SESSION['status_code']; ?>",
+                });
+    </script>
+<?php
+            unset($_SESSION['status']);
+            unset($_SESSION['status_message']);
+            unset($_SESSION['status_code']);
+        }
+?>
 
 </script>
-    <footer>
-        <?php
-        include '../components/footer.php';
-        ?>
-    </footer>
+<footer>
+    <?php
+    include '../components/footer.php';
+    ?>
+</footer>

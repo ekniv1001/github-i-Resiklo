@@ -17,11 +17,12 @@ while ($show3 = mysqli_fetch_array($result3)) {
 
 $qry1 = "SELECT * FROM tbl_userinfo where id = '$collector_id'";
 $result1 = mysqli_query($conn, $qry1);
-while ($show = mysqli_fetch_array($result1)) {
+while ($show4 = mysqli_fetch_array($result1)) {
 
-    $first_name = $show['first_name'];
-    $last_name = $show['last_name'];
-    $points = $show['points'];
+    $first_name1 = $show4['first_name'];
+    $last_name1 = $show4['last_name'];
+    $photo1 = $show4['photo'];
+    $points = $show4['points'];
 }
 
 
@@ -57,6 +58,12 @@ if (isset($_POST['updatebtn'])) {
         $user_id = 0;
         $received = "received";
         $sql = "INSERT INTO tbl_logs (user_id, collector_id,  log_date, remarks) VALUES ('$user_id', '$collector_id' , '$date_added' , '$received' )";
+        $qry = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+        $collect_quantity = $add_points;
+        $collector_fname = $first_name1;
+        $collector_lname = $last_name1;
+        $sql = "INSERT INTO tbl_collected (collector_fname, collector_lname, collect_quantity) VALUES ('$collector_fname','$collector_lname','$collect_quantity')";
         $qry = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
     ?>
@@ -136,11 +143,11 @@ if (isset($_POST['updatebtn'])) {
                     <div class="card-panel grey lighten-5 z-depth-1">
                         <div class="row valign-wrapper">
                             <div class="col s2">
-                                <img src="../images/defaultimg.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                                <img src="../images/<?php echo $photo1;?>" alt="" class="responsive-img"> <!-- notice the "circle" class -->
                             </div>
-                            <div class="col s5 center">
+                            <div class="col s8 center">
                                 <span class="green-text">
-                                    <p class="flow-text"> Name: <?php echo $last_name . ", " . $first_name; ?></p>
+                                    <p class="flow-text"><?php echo $first_name1. ", " .$last_name1; ?></p>
                                 </span>
                                 <span class="green-text">
 
@@ -175,6 +182,12 @@ if (isset($_POST['updatebtn'])) {
                     <input class="blue-text" id="add_points" type="number" name="add_points" style="text-align: center; font-size: 30px;" class="validate" value="<?php echo $add_points; ?>" required>
                     <label for="add_points">Enter Number of Plastic Bottles</label><br><br>
                     <div class="center">
+
+
+
+
+
+
                         <button class="btn waves-effect waves-light center" type="submit" name="updatebtn">confirm
                             <i class="material-icons right">done</i>
                         </button>
@@ -182,6 +195,8 @@ if (isset($_POST['updatebtn'])) {
                 </div>
             </div>
         </div>
+
+
 
 
         </form>

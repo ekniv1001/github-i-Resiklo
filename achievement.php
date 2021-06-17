@@ -1,6 +1,8 @@
 <?php
-include "session.php";
-include "../services/action_achievements.php";
+
+//include "../services/database_connection.php";
+include "services/action_achievements.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,30 +20,22 @@ include "../services/action_achievements.php";
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
 
-    <title>Achievements</title>
+    <title>Collector Page</title>
 
 </head>
 
 <body>
-    <?php
-    include "sessionbody.php";
 
-    ?>
     <header>
         <div class="navbar-fixed">
             <nav class="green lighten-1 z-depth-0" role="navigation">
                 <div class="container">
                     <div class="nav-wrapper">
-                        <a href="collector_home_view.php" class="brand-logo" style="font-weight: 600;">i-Resiklo</a>
+                        <a href="index.php" class="brand-logo" style="font-weight: 600;">i-Resiklo</a>
                         <a href="#" data-target="mobile-ver" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li style="font-weight: 600;"><a href="user_home_view.php">Home</a></li>
-                            <li style="font-weight: 600;"><a href="user_profile.php">Profile</a></li>
-                            <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
-                            <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
-                            <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
-                            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
-                            <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
+                            <li style="font-weight: 600;"><a href="index.php"><i class="material-icons left">home</i>Home</a></li>
+                            <!-- <li style="font-weight: 600;"><a href="#about">About</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
                             <!-- <li style="font-weight: 600;"><a href="sign_up.php">Signup</a></li> -->
                         </ul>
@@ -51,53 +45,47 @@ include "../services/action_achievements.php";
         </div>
 
         <ul class="sidenav" id="mobile-ver">
-            <li style="font-weight: 600;"><a href="user_home_view.php">Home</a></li>
-            <li style="font-weight: 600;"><a href="user_profile.php">Profile</a></li>
-            <li style="font-weight: 600;"><a href="user_rewards.php">Rewards</a></li>
-            <li style="font-weight: 600;"><a href="user_points.php">My Points</a></li>
-            <li style="font-weight: 600;"><a href="user_voucher.php">Voucher</a></li>
-            <li style="font-weight: 600;"><a href="user_logs.php">History</a></li>
-            <li style="font-weight: 600;"><a href="../services/logout.php">Logout</a></li>
+            <li style="font-weight: 600;"><a href="index.php">Home</a></li>
+            <!-- <li style="font-weight: 600;"><a href="#about">About</a></li> -->
             <!-- <li style="font-weight: 600;"><a href="#login" class="modal-trigger">Login</a></li> -->
         </ul>
     </header>
 
+
+    <!-- fixed side-nav -->
+
     <main>
-        <div class="container">
-            <div class="green-text left">
-                <h3><strong><em>"Read more about our Achievements"</em></strong></h3>
-                <div class="divider"></div>
-                <br><br><br>
-            </div>
-        </div>
         <br>
         <div class="container">
-            <?php foreach ($query as $achieve) { ?>
-
-                <div class="row">
+            <!-- <a href="admin_achievement_create.php" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Post New Achievement</a> -->
+            <h1 class="green-text"> Welcome to our Achievements</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="divider"></div>
+                <?php foreach ($query as $achieve) { ?>
                     <div class="col s12">
-                        <div class="card">
+                        <div class="divider"></div>
+                        <h3 class="header"><?php echo $achieve['achieve_title']; ?></h3>
+                        <p><em>Published:</em> <strong> <?php echo $achieve['date_created']; ?></strong></p>
+                        <div class="card horizontal small">
                             <div class="card-image">
-                                <img src="../uploads/<?php echo $achieve['headerimg']; ?>" height="400px;">
-                                <!-- <span class="card-title">Card Title</span> -->
+                                <img src="../uploads/<?php echo $achieve['headerimg']; ?>">
                             </div>
-                            <div class="card-content">
-                                <h1><em><?php echo $achieve['achieve_title']; ?></em></h1>
-                                <p class="flow-text"><?php echo $achieve['achieve_content']; ?></p>
-                                <div class="divider"></div>
-                                <div class="section">
-                                    <p><em>Published:</em> <strong> <?php echo $achieve['date_created']; ?></strong></p>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p class="flow-text"><?php echo $achieve['achieve_content']; ?></p>
+                                </div>
+                                <div class="card-action teal">
+                                    <a href="achievement_view.php?achieve_id=<?php echo $achieve['achieve_id']; ?>" class="white-text">Read More<i class="material-icons">navigate_next</i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
-            <div class="divider"></div><br>
-
+                <?php } ?>
+            </div>
         </div>
     </main>
-
 
 
     <footer class="page-footer green lighten-1">

@@ -120,13 +120,13 @@ $photo = $show['photo'];
                                                         <label for="last_name">Last Name</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="input-field col s12">
-                                                        <i class="material-icons prefix green-text text-green lighten-1">event</i>
-                                                        <input disabled id="birthdate" type="text" value="<?php echo $birthday; ?>" name="birthday" class="datepicker" value="" required>
-                                                        <label for="birthdate">Birthday</label>
+                                                        <i class="material-icons prefix green-text text-green lighten-1">event</i> -->
+                                                        <input disabled id="birthdate" type="text" value="<?php echo $birthday; ?>" name="birthday" class="datepicker" hidden value="" required>
+                                                        <!-- <label for="birthdate">Birthday</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <div class="row">
                                                     <div class="input-field col s12">
@@ -195,13 +195,13 @@ $photo = $show['photo'];
                                                         <label for="address">Address (House No. Bldg. St. Purok)</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="input-field col s12">
-                                                        <i class="material-icons prefix green-text text-green lighten-1">call</i>
-                                                        <input disabled id="contact_number" value="<?php echo $contact_number; ?>" type="text" name="contact_number" class="validate" value="" required>
-                                                        <label for="contact_number">Contact Number</label>
+                                                        <i class="material-icons prefix green-text text-green lighten-1">call</i> -->
+                                                        <input disabled id="contact_number" value="<?php echo $contact_number; ?>" type="text" name="contact_number" class="validate" hidden value="" required>
+                                                        <!-- <label for="contact_number">Contact Number</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix green-text text-green lighten-1">email</i>
@@ -215,9 +215,9 @@ $photo = $show['photo'];
                                 </div>
                             </div>
                         </div>
-                        <div class="card-action center">
+                        <!-- <div class="card-action center">
                             <a href="collector_profile_update.php?user_id=<?php echo $user_id; ?>" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>edit</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -57,6 +57,7 @@ if (isset($_POST['savebtn'])) {
     $reward_item = $_POST['reward_item'];
     $equiv_points = $_POST['equiv_points'];
     $status = $_POST['status'];
+    $reward_stock = $_POST['reward_stock'];
 
     $img_name = $_FILES['picture']['name'];
     $img_size = $_FILES['picture']['size'];
@@ -80,7 +81,7 @@ if (isset($_POST['savebtn'])) {
                 $img_upload_path = '../images/' . $new_img_name;
                 move_uploaded_file($tmp_name, $img_upload_path);
 
-                $sql = "INSERT INTO tbl_rewards (picture, reward_item, equiv_points, status) VALUES ('$new_img_name', '$reward_item', '$equiv_points', '$status') ";
+                $sql = "INSERT INTO tbl_rewards (picture, reward_item, equiv_points, status, reward_stock) VALUES ('$new_img_name', '$reward_item', '$equiv_points', '$status', '$reward_stock') ";
                 $qry = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
                 if ($qry) {
@@ -159,7 +160,7 @@ if (isset($_POST['savebtn'])) {
 
 
     <main><br>
-
+<!-- 
         <div class="row">
             <div>
                 <div class="col s12">
@@ -236,7 +237,7 @@ if (isset($_POST['savebtn'])) {
                                 <input type="text" name="status" value="active" hidden>
                                 <div class="center" style="padding-bottom: 10px;">
                                     <button type="submit" name="savebtn" class="waves-effect waves-light btn-small green lighten-1"><i class="medium material-icons right">save</i>Save</button>
-                                    <!-- <a href="" class="waves-effect waves-light btn-small green lighten-1"><i class="medium material-icons right">publish</i>Publish</a> -->
+                                     <a href="" class="waves-effect waves-light btn-small green lighten-1"><i class="medium material-icons right">publish</i>Publish</a>
                                 </div>
                         </form>
                     </div>
@@ -245,7 +246,7 @@ if (isset($_POST['savebtn'])) {
         </div>
         </div>
 
-        <div style="height: 50px;"></div>
+        <div style="height: 50px;"></div> -->
         <div class="row">
             <div class="col s12">
                 <div class="card-panel teal lighten-2">
@@ -332,15 +333,15 @@ if (isset($_POST['savebtn'])) {
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix green-text text-green lighten-1">description</i>
-                                    <input id="title" type="number" name="equiv_points" class="validate">
-                                    <label for="title">Equivalent Points</label>
+                                    <input id="equiv" type="number" name="equiv_points" class="validate">
+                                    <label for="equiv">Equivalent Points</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix green-text text-green lighten-1">description</i>
-                                    <input id="title" type="number" name="reward_stock" class="validate">
-                                    <label for="title">Stocks</label>
+                                    <input id="stock" type="number" name="reward_stock" class="validate">
+                                    <label for="stock">Stocks</label>
                                 </div>
                             </div>
                             <input type="text" name="status" value="active" hidden>

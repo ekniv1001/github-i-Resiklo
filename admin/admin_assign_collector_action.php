@@ -10,7 +10,7 @@ $collector = "collector";
 
 ?>
 <script>
-	alert("User successfully assigned");
+	alert("User successfully assigned as Collector");
 	window.location.href='admin_assign_collector.php';
 </script>
 

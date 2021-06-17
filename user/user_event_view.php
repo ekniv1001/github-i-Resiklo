@@ -1,6 +1,8 @@
 <?php
 include "session.php";
-include "../services/action_achievements.php";
+include "../services/database_connection.php";
+include "../services/action_event.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@ include "../services/action_achievements.php";
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
 
-    <title>Achievements</title>
+    <title>Events</title>
 
 </head>
 
@@ -62,38 +64,39 @@ include "../services/action_achievements.php";
         </ul>
     </header>
 
+
+
+    <!-- fixed side-nav -->
     <main>
-        <div class="container">
-            <div class="green-text left">
-                <h3><strong><em>"Read more about our Achievements"</em></strong></h3>
-                <div class="divider"></div>
-                <br><br><br>
-            </div>
-        </div>
         <br>
         <div class="container">
-            <?php foreach ($query as $achieve) { ?>
+            <div class="green-text center">
+                <h2><strong><em>" Our latest Upcoming Events on how to care our environment"</em></strong></h2>
+            </div>
+            <div class="divider"></div>
+            <br><br>
+            <?php foreach ($query as $event) { ?>
 
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
                             <div class="card-image">
-                                <img src="../uploads/<?php echo $achieve['headerimg']; ?>" height="400px;">
+                                <img src="../uploads/<?php echo $event['event_img']; ?>" height="400px">
                                 <!-- <span class="card-title">Card Title</span> -->
                             </div>
-                            <div class="card-content">
-                                <h1><em><?php echo $achieve['achieve_title']; ?></em></h1>
-                                <p class="flow-text"><?php echo $achieve['achieve_content']; ?></p>
+                            <div class="card-content grey-text">
+                                <h1><em><?php echo $event['event_title']; ?></em></h1>
+                                <h6><em><?php echo $event['event_date'] . ", Time: " . $event['event_time'] . ", @ " . $event['event_setting']; ?></em></h6>
+                                <p class="flow-text"><?php echo $event['event_content']; ?></p>
                                 <div class="divider"></div>
                                 <div class="section">
-                                    <p><em>Published:</em> <strong> <?php echo $achieve['date_created']; ?></strong></p>
+                                    <p><em>Published:</em> <strong> <?php echo $event['date_created']; ?></strong></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php } ?>
-            <div class="divider"></div><br>
 
         </div>
     </main>

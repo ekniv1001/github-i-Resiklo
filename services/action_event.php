@@ -12,6 +12,8 @@ if (isset($_REQUEST["eventbtn"])) {
     $event_title = $_REQUEST["event_title"];
     $event_content = $_REQUEST["event_content"];
     $event_date = $_REQUEST["event_date"];
+    $event_time = $_REQUEST["event_time"];
+    $event_setting = $_REQUEST["event_setting"];
 
 
     //product image POST
@@ -44,7 +46,7 @@ if (isset($_REQUEST["eventbtn"])) {
 
 
 
-                $sql = "INSERT INTO tbl_events (event_img,event_title,event_content,event_date) VALUES ('$new_img_name','$event_title','$event_content','$event_date')";
+                $sql = "INSERT INTO tbl_events (event_img,event_title,event_content,event_date,event_time,event_setting) VALUES ('$new_img_name','$event_title','$event_content','$event_date','$event_time', '$event_setting')";
                 mysqli_query($conn, $sql);
 
                 header("Location: admin_events.php?info=published");
@@ -70,9 +72,11 @@ if (isset($_REQUEST['update'])) {
     $event_title = $_REQUEST['event_title'];
     $event_content = $_REQUEST['event_content'];
     $event_date = $_REQUEST['event_date'];
+    $event_time = $_REQUEST['event_time'];
+    $event_setting = $_REQUEST['event_setting'];
     
 
-    $sql = "UPDATE tbl_events SET event_title = '$event_title', event_content = '$event_content' event_date = '$event_date' WHERE event_id = $event_id";
+    $sql = "UPDATE tbl_events SET event_title = '$event_title', event_content = '$event_content', event_date = '$event_date', event_time = '$event_time', event_setting = '$event_setting' WHERE event_id = $event_id";
     mysqli_query($conn, $sql);
 
     header("Location: admin_events.php?info=updated");

@@ -96,10 +96,13 @@ if (isset($_POST['login'])) {
   <section class="slider">
     <ul class="slides">
       <li>
-        <img class="responsive-img" src="images/env2.jpg">
+        <img class="responsive-img" src="images/bgc.jpg">
         <div class="caption left-align">
-          <h1 class="bold">CENRO Malolos</h1>
+          <h1 class="bold">CENRO MALOLOS</h1>
           <h5 class="bold">City Environment and Natural Resources Office.</h5>
+          <div style="height: 200px; width:200px" class="center">
+            <img src="images/logo.png" alt="">
+          </div>
         </div>
       </li>
     </ul>
@@ -122,7 +125,7 @@ if (isset($_POST['login'])) {
             <h5 class="light grey-text text-darken-1">View our Achievements and Milestone.</h5>
           </div>
           <div class="card-action">
-            <a href="#">VIEW ACHIEVEMENTS</a>
+            <a href="achievement.php">VIEW ACHIEVEMENTS</a>
           </div>
         </div>
       </div>
@@ -155,7 +158,7 @@ if (isset($_POST['login'])) {
             </h5>
           </div>
           <div class="card-action">
-            <a href="#">UPCOMING EVENTS</a>
+            <a href="events.php">UPCOMING EVENTS</a>
             <!-- <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a> -->
           </div>
         </div>

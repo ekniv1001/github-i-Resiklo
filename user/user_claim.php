@@ -109,30 +109,29 @@ while ($show = mysqli_fetch_array($result)) {
             <div style="height: 50px;"></div>
             <!-- <div class="container"> -->
             <div class="row">
-                <div class="col s2"></div>
-                <div class="col s8">
+                <div class="col s3"></div>
+                <div class="col s6">
                     <div class="card">
                         <div class="card-image">
-                            <img src="../images/<?php echo $picture; ?>">
+                            <img class="responive-img" src="../images/<?php echo $picture; ?>">
                             <!-- <span class="card-title">Card Title</span> -->
                         </div>
-                        <div class="card-content">
+                        <div class="divider"></div>
+                        <div class="card-content center">
                             <div class="green-text" style="font-size: 20px;font-weight:600">
                                 <p>Reward Item: <?php echo $reward_item; ?></p>
-                                <p>Required Points: <?php echo $equiv_points * $claim_quantity; ?> </p>
+                                <p>Used Points: <?php echo $equiv_points * $claim_quantity; ?> </p>
                                 <p>Quantity: <?php echo $claim_quantity; ?></p>
                             </div>
                         </div>
                         <form method="POST" action="">
-                            <div class="card-action center">
-                                <!-- <button class="btn waves-effect waves-light" type="submit" name="claimbtn">Claim Now
-                                    <i class="material-icons right">done_all</i>
-                                </button> -->
+                            <div class="card-action">
+                                <label style="font-size: 16px;" for="">Please present this voucher to claim your reward item(s)</label>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col s2"></div>
+                <div class="col s3"></div>
             </div>
         </div>
         </div>

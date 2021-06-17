@@ -8,14 +8,14 @@ include "session.php";
 
 
 
-if(isset($_POST['approvebtn'])){
+if (isset($_POST['approvebtn'])) {
     $claim_id = $_POST['claim_id'];
 ?>
     <script>
-        const answer = confirm("Are you want to approve this voucher request?");
+        const answer = confirm("Do you want to approve this voucher request?");
         if (answer == true) {
 
-            window.location.href='admin_confirm_voucher_action.php?claim_id=<?php echo $claim_id; ?>';
+            window.location.href = 'admin_confirm_voucher_action.php?claim_id=<?php echo $claim_id; ?>';
         }
     </script>
 
@@ -29,14 +29,14 @@ if(isset($_POST['approvebtn'])){
 
 
 
-if(isset($_POST['claimedbtn'])){
+if (isset($_POST['claimedbtn'])) {
     $claim_id = $_POST['claim_id'];
 ?>
     <script>
-        const answer = confirm("Are you want to mark this as claimed item?");
+        const answer = confirm("Please confirm to mark this item as claimed");
         if (answer == true) {
 
-            window.location.href='admin_confirm_voucher_claimed.php?claim_id=<?php echo $claim_id; ?>';
+            window.location.href = 'admin_confirm_voucher_claimed.php?claim_id=<?php echo $claim_id; ?>';
         }
     </script>
 
@@ -115,6 +115,10 @@ if(isset($_POST['claimedbtn'])){
 
     <main>
         <div class="container">
+            <h4 class="green-text">Voucher Approval</h4>
+            <div class="divider"></div>
+        </div>
+        <div class="container">
             <table>
                 <thead>
                     <tr>
@@ -125,105 +129,100 @@ if(isset($_POST['claimedbtn'])){
                         <th>Action</th>
                     </tr>
                 </thead>
-    <tbody>
-<?php 
-$claimed = "claimed";
- $qry1 = "SELECT * FROM tbl_claim where claim_status != '$claimed' ";
-    $result = mysqli_query($conn, $qry1);
+                <tbody>
+                    <?php
+                    $claimed = "claimed";
+                    $qry1 = "SELECT * FROM tbl_claim where claim_status != '$claimed' ";
+                    $result = mysqli_query($conn, $qry1);
 
-while ($show = mysqli_fetch_array($result)) {
-$claim_user_id = $show['claim_user_id'];
-$reward_id = $show['claim_reward_id'];
-?>
+                    while ($show = mysqli_fetch_array($result)) {
+                        $claim_user_id = $show['claim_user_id'];
+                        $reward_id = $show['claim_reward_id'];
+                    ?>
 
-<?php
-
-
-$qry2 = "SELECT * FROM tbl_userinfo where id = '$claim_user_id'";
-    $result2 = mysqli_query($conn, $qry2);
-    while ($show2 = mysqli_fetch_array($result2)) {
+                        <?php
 
 
- ?>
-                    <tr>
-                        <td><?php echo $show2['last_name'].", ".$show2['first_name']; ?>
-                          <?php echo $show2['address'].", ".$show2['barangay']; ?>  
+                        $qry2 = "SELECT * FROM tbl_userinfo where id = '$claim_user_id'";
+                        $result2 = mysqli_query($conn, $qry2);
+                        while ($show2 = mysqli_fetch_array($result2)) {
 
 
-                        </td>
+                        ?>
+                            <tr>
+                                <td><?php echo $show2['last_name'] . ", " . $show2['first_name']; ?>
+                                    <?php echo $show2['address'] . ", " . $show2['barangay']; ?>
 
 
-<?php } ?>
-
-<?php
+                                </td>
 
 
-$qry3 = "SELECT * FROM tbl_rewards where id_reward = '$reward_id'";
-    $result3 = mysqli_query($conn, $qry3);
-    while ($show3 = mysqli_fetch_array($result3)) {
+                            <?php } ?>
+
+                            <?php
 
 
- ?>
+                            $qry3 = "SELECT * FROM tbl_rewards where id_reward = '$reward_id'";
+                            $result3 = mysqli_query($conn, $qry3);
+                            while ($show3 = mysqli_fetch_array($result3)) {
 
 
-
-                        <td><?php echo $show3['reward_item']; ?></td>
-<?php } ?>
-
-
-                        <td><?php echo $show['claim_quantity']; ?></td>
-                        <td><?php echo $show['claim_status']; ?></td>
-                     
+                            ?>
 
 
 
-<?php 
-if($show['claim_status'] == "request"){ ?>
-
- <td>
-<form action="" method="POST">
-<input type="text" name="claim_id" value="<?php echo $show['claim_id']; ?>" hidden>
-                            <button class="btn waves-effect waves-light" type="submit" name="approvebtn">approve
-                                <i class="material-icons right">send</i>
-                           
-                            </button>
-
-</form>
+                                <td><?php echo $show3['reward_item']; ?></td>
+                            <?php } ?>
 
 
-                        </td>
-
-<?php  
-}elseif ($show['claim_status'] == "unclaimed") { ?>
-  <td>
-<form action="" method="POST">
-<input type="text" name="claim_id" value="<?php echo $show['claim_id']; ?>" hidden>
-                            <button class="btn waves-effect waves-light" type="submit" name="claimedbtn">Claimed
-                                <i class="material-icons right">send</i>
-                           
-                            </button>
-
-</form>
-
-
-                        </td>
-
-
-  <?php
-}
-
- ?>
+                            <td><?php echo $show['claim_quantity']; ?></td>
+                            <td><?php echo $show['claim_status']; ?></td>
 
 
 
 
+                            <?php
+                            if ($show['claim_status'] == "request") { ?>
 
-                       
-                    </tr>
+                                <td>
+                                    <form action="" method="POST">
+                                        <input type="text" name="claim_id" value="<?php echo $show['claim_id']; ?>" hidden>
+                                        <button class="btn waves-effect waves-light" type="submit" name="approvebtn">approve
+                                            <i class="material-icons right">send</i>
+
+                                        </button>
+
+                                    </form>
+
+
+                                </td>
+
+                            <?php
+                            } elseif ($show['claim_status'] == "unclaimed") { ?>
+                                <td>
+                                    <form action="" method="POST">
+                                        <input type="text" name="claim_id" value="<?php echo $show['claim_id']; ?>" hidden>
+                                        <button class="btn waves-effect waves-light" type="submit" name="claimedbtn">claimed
+                                        <i class="material-icons right">done</i>
+                                        </button>
+
+                                    </form>
+
+
+                                </td>
+
+
+                            <?php
+                            }
+
+                            ?>
+
+
+                            </tr>
 
 
 
-<?php } ?>
+                        <?php } ?>
 
 
 

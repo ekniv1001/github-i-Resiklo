@@ -1,6 +1,8 @@
 <?php
 include "session.php";
-include "../services/action_achievements.php";
+include "../services/database_connection.php";
+include "../services/action_event.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,41 +64,52 @@ include "../services/action_achievements.php";
         </ul>
     </header>
 
-    <main>
-        <div class="container">
-            <div class="green-text left">
-                <h3><strong><em>"Read more about our Achievements"</em></strong></h3>
-                <div class="divider"></div>
-                <br><br><br>
-            </div>
-        </div>
-        <br>
-        <div class="container">
-            <?php foreach ($query as $achieve) { ?>
 
+
+    <!-- fixed side-nav -->
+
+    <main>
+            <br>
+
+            <div class="container">
+                <div class="green-text center">
+                    <h2><strong><em>"See our latest Upcoming Events on how to care our environment"</em></strong></h2>
+                </div>
+                <br><br>
                 <div class="row">
-                    <div class="col s12">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../uploads/<?php echo $achieve['headerimg']; ?>" height="400px;">
-                                <!-- <span class="card-title">Card Title</span> -->
-                            </div>
-                            <div class="card-content">
-                                <h1><em><?php echo $achieve['achieve_title']; ?></em></h1>
-                                <p class="flow-text"><?php echo $achieve['achieve_content']; ?></p>
+                    <div class="divider"></div>
+                    <?php foreach ($query as $event) { ?>
+                        <div class="col s12">
+                            <div class="divider"></div>
+
+                            <div class="green lighten-5">
+                                <h2 style="padding: 0 10px;" class="header"><?php echo $event['event_title']; ?></h2>
                                 <div class="divider"></div>
-                                <div class="section">
-                                    <p><em>Published:</em> <strong> <?php echo $achieve['date_created']; ?></strong></p>
+                                <div style="padding: 10px;">
+                                    <h5 class="header">Event Date: <?php echo $event['event_date']; ?></h5>
+                                    <h6 class="header">Event Time: <?php echo $event['event_time']; ?></h6>
+                                    <h6 class="header">Venue: <?php echo $event['event_setting']; ?></h6>
+                                    <div class="card horizontal small">
+                                        <div class="card-image">
+                                            <img src="../uploads/<?php echo $event['event_img']; ?>">
+                                        </div>
+                                        <div class="card-stacked">
+                                            <div class="card-content">
+                                                <p class="flow-text"><?php echo $event['event_content']; ?></p>
+                                            </div>
+                                            <p><em>Published:</em> <strong> <?php echo $event['date_created']; ?></strong></p>
+                                            <div class="card-action teal">
+                                                <a href="user_event_view.php?event_id=<?php echo $event['event_id']; ?>" class="white-text">Read More<i class="material-icons">navigate_next</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
-            <?php } ?>
-            <div class="divider"></div><br>
-
-        </div>
-    </main>
+            </div>
+        </main>
 
 
 

@@ -29,15 +29,15 @@ while ($show4 = mysqli_fetch_array($result4)) {
 
 
 
-if(isset($_POST['filterbtn'])){
+if (isset($_POST['filterbtn'])) {
 
-$search = $_POST['barangay'];
+    $search = $_POST['barangay'];
 
 ?>
 
-<script>
-    window.location.href='collector_myCollection.php?search=<?php echo $search; ?>';
-</script>
+    <script>
+        window.location.href = 'collector_myCollection.php?search=<?php echo $search; ?>';
+    </script>
 <?php
 
 }
@@ -46,21 +46,17 @@ $search = $_POST['barangay'];
 
 
 
-if(!isset($_GET['search'])){
+if (!isset($_GET['search'])) {
 
-$user = "user";
- $qry1 = "SELECT * FROM tbl_userinfo where user_type = '$user' ";
- $result1 = mysqli_query($conn, $qry1);
+    $user = "user";
+    $qry1 = "SELECT * FROM tbl_userinfo where user_type = '$user' ";
+    $result1 = mysqli_query($conn, $qry1);
+} else {
+    $search = $_GET['search'];
 
-
-}else{
-$search = $_GET['search'];
-
-$user = "user";
- $qry1 = "SELECT * FROM tbl_userinfo where barangay LIKE '$search' and user_type = '$user' ";
- $result1 = mysqli_query($conn, $qry1);
-
-
+    $user = "user";
+    $qry1 = "SELECT * FROM tbl_userinfo where barangay LIKE '$search' and user_type = '$user' ";
+    $result1 = mysqli_query($conn, $qry1);
 }
 
 
@@ -96,10 +92,7 @@ $user = "user";
     <?php
     include "collector_sessionbody.php";
 
-$collector_id =  isset($id) ? $id : ''; 
-
-
-    ;
+    $collector_id =  isset($id) ? $id : '';;
 
     ?>
     <header>
@@ -149,10 +142,10 @@ $collector_id =  isset($id) ? $id : '';
                     </div>
                 </div>
             </div>
-            <div class="divider"></div> <br>
+            <!-- <div class="divider"></div> <br> -->
         </div>
 
-        <div style="height: 60px;"></div>
+        <!-- <div style="height: 20px;"></div> -->
         <div class="container">
             <div class="col s12">
                 <div class="card-panel blue lighten-4">
@@ -217,9 +210,12 @@ $collector_id =  isset($id) ? $id : '';
                                     <option value="Tikay">Tikay</option>
                                 </select>
                                 <label>Select Barangay</label>
+                                <button class="btn waves-effect waves-light" type="submit" name="filterbtn">Search
+                                    <i class="material-icons right">search</i>
+                                </button>
+                                <a href="collector_myCollection.php" class="waves-effect waves-light btn"><i class="material-icons">autorenew</i></a>
 
-<button type="submit" name="filterbtn">filter</button>
-   </form>
+                            </form>
 
                         </div>
                     </div>
@@ -230,38 +226,40 @@ $collector_id =  isset($id) ? $id : '';
                     <tr>
                         <th>Photo</th>
                         <th>Name</th>
+                        <th>Barangay</th>
                         <th>Address</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-<?php 
+                    <?php
 
 
- while ($show = mysqli_fetch_array($result1)) {
+                    while ($show = mysqli_fetch_array($result1)) {
 
- ?>
-
-
-
+                    ?>
 
 
 
 
-                    <tr>
-                        <td><img src="../images/<?php echo $show['photo']; ?>" width = "100px;"></td>
-                        <td><?php echo $show['last_name'].", ".$show['first_name']; ?></td>
-                        <td><?php echo $show['address']; ?></td>
-                    </tr>
 
 
-<?php } ?>
+
+                        <tr>
+                            <td><img src="../images/<?php echo $show['photo']; ?>" width="100px;"></td>
+                            <td><?php echo $show['last_name'] . ", " . $show['first_name']; ?></td>
+                            <td><?php echo $show['barangay']; ?></td>
+                            <td><?php echo $show['address']; ?></td>
+                        </tr>
+
+
+                    <?php } ?>
 
 
                 </tbody>
             </table>
-         
+
         </div>
 
         <div style="height: 60px;"></div>
@@ -279,42 +277,42 @@ $collector_id =  isset($id) ? $id : '';
                             <th>Date</th>
                         </tr>
                     </thead>
-                       <tbody>
+                    <tbody>
 
-<?php 
-$blank = 0;
- $qry1 = "SELECT * FROM tbl_summary where collector_id = '$collector_id' and user_id != '$blank' ";
- $result1 = mysqli_query($conn, $qry1);
- while ($show = mysqli_fetch_array($result1)) {
-$user_id = $show['user_id'];
-
-
-
-
- $qry3 = "SELECT * FROM tbl_userinfo where id = '$user_id' ";
- $result3 = mysqli_query($conn, $qry3);
- while ($show3 = mysqli_fetch_array($result3)) {
-
-
- ?>
+                        <?php
+                        $blank = 0;
+                        $qry1 = "SELECT * FROM tbl_summary where collector_id = '$collector_id' and user_id != '$blank' ";
+                        $result1 = mysqli_query($conn, $qry1);
+                        while ($show = mysqli_fetch_array($result1)) {
+                            $user_id = $show['user_id'];
 
 
 
-                 
-                        <tr>
-                            <td><?php echo $show3['last_name'].", ".$show3['first_name']; ?></td>
-                            <td><?php echo $show3['address']; ?> </td>
+
+                            $qry3 = "SELECT * FROM tbl_userinfo where id = '$user_id' ";
+                            $result3 = mysqli_query($conn, $qry3);
+                            while ($show3 = mysqli_fetch_array($result3)) {
 
 
-<?php } ?>
+                        ?>
 
 
-                            <td><?php echo $show['num_bottles']; ?></td>
-                            <td><?php echo $show['date_added']; ?></td>
-                        </tr>
 
 
-<?php } ?>
+                                <tr>
+                                    <td><?php echo $show3['last_name'] . ", " . $show3['first_name']; ?></td>
+                                    <td><?php echo $show3['address']; ?> </td>
+
+
+                                <?php } ?>
+
+
+                                <td><?php echo $show['num_bottles']; ?></td>
+                                <td><?php echo $show['date_added']; ?></td>
+                                </tr>
+
+
+                            <?php } ?>
 
 
 
@@ -347,43 +345,43 @@ $user_id = $show['user_id'];
                     </thead>
 
                     <tbody>
-                        
-
-
-<?php 
-$blank = 0;
- $qry1 = "SELECT * FROM tbl_summary where collector_id = '$collector_id' and user_id != '$blank' ";
- $result1 = mysqli_query($conn, $qry1);
- while ($show = mysqli_fetch_array($result1)) {
-$user_id = $show['user_id'];
 
 
 
-
- $qry3 = "SELECT * FROM tbl_userinfo where id = '$user_id' ";
- $result3 = mysqli_query($conn, $qry3);
- while ($show3 = mysqli_fetch_array($result3)) {
-
-
- ?>
-
+                        <?php
+                        $blank = 0;
+                        $qry1 = "SELECT * FROM tbl_summary where collector_id = '$collector_id' and user_id != '$blank' ";
+                        $result1 = mysqli_query($conn, $qry1);
+                        while ($show = mysqli_fetch_array($result1)) {
+                            $user_id = $show['user_id'];
 
 
-                 
-                        <tr>
-                            <td><?php echo $show3['last_name'].", ".$show3['first_name']; ?></td>
-                            <td><?php echo $show3['address']; ?> </td>
 
 
-<?php } ?>
+                            $qry3 = "SELECT * FROM tbl_userinfo where id = '$user_id' ";
+                            $result3 = mysqli_query($conn, $qry3);
+                            while ($show3 = mysqli_fetch_array($result3)) {
 
 
-                            <td><?php echo $show['points_added']; ?></td>
-                            <td><?php echo $show['date_added']; ?></td>
-                        </tr>
+                        ?>
 
 
-<?php } ?>
+
+
+                                <tr>
+                                    <td><?php echo $show3['last_name'] . ", " . $show3['first_name']; ?></td>
+                                    <td><?php echo $show3['address']; ?> </td>
+
+
+                                <?php } ?>
+
+
+                                <td><?php echo $show['points_added']; ?></td>
+                                <td><?php echo $show['date_added']; ?></td>
+                                </tr>
+
+
+                            <?php } ?>
 
 
 

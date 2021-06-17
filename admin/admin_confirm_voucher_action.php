@@ -13,7 +13,7 @@ $query = "UPDATE tbl_claim set claim_status = '$unclaimed' where claim_id = '$cl
 if($result){
 ?>
 <script>
-	alert("Claim request successfully approved");
+	alert("Claim voucher request is successfully approved");
 	window.location.href='admin_confirm_voucher.php';
 </script>
 <?php

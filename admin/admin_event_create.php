@@ -83,19 +83,32 @@ include "session.php";
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix green-text text-green lighten-1">description</i>
-                            <input id="title" type="text" name="event_content" class="validate" required>
-                            <label for="title">Event Content</label>
+                            <i class="material-icons prefix green-text text-green lighten-1">article</i>
+                            <textarea id="content" name="event_content" class="materialize-textarea validate" required></textarea>
+                            <label for="content">Content</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix green-text text-green lighten-1">event</i>
-                            <input id="birthdate" type="text" name="event_date" tabindex="-1" class="datepicker" value="" required>
-                            <label for="birthdate">Event Date</label>
+                            <i class="material-icons prefix green-text text-green lighten-1">place</i>
+                            <input id="place" type="text" name="event_setting" class="validate" required>
+                            <label for="place">Event Setting</label>
                         </div>
                     </div>
-               
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix green-text text-green lighten-1">event</i>
+                            <input id="event_date" type="text" name="event_date" tabindex="-1" class="datepicker" value="" required>
+                            <label for="event_date">Event Date</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix green-text text-green lighten-1">timer</i>
+                            <input id="time" type="text" name="event_time" tabindex="-1" class="timepicker" value="" required>
+                            <label for="time">Event Time</label>
+                        </div>
+                    </div>
                     <div class="center">
                         <button name="eventbtn" class="waves-effect waves-light btn-small green lighten-1"><i class="medium material-icons right">publish</i>Publish</button>
                         <!-- <a href="" class="waves-effect waves-light btn-small green lighten-1"><i class="medium material-icons right">publish</i>Publish</a> -->
@@ -141,6 +154,11 @@ include "session.php";
             var instances = M.Collapsible.init(elems, {
                 accordion: true
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var timepicker = document.querySelectorAll('.timepicker');
+            var instances = M.Timepicker.init(timepicker, {});
         });
     </script>
     <script type="text/javascript" src="../js/materialize.js"></script>

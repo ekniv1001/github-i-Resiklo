@@ -34,7 +34,7 @@ $qry = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 if ($qry) { ?>
 	<script>
-		alert("Voucher Successfully claimed, Please read our instructions on how to claim your rewards");
+		alert("Voucher request successful, Please wait for the Admin to approve your request before claiming your reward(s)");
 		window.location.href = '../user/user_rewards.php';
 	</script>
 

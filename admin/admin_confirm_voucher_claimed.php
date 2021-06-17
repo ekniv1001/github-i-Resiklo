@@ -13,7 +13,7 @@ $query = "UPDATE tbl_claim set claim_status = '$claimed' where claim_id = '$clai
 if($result){
 ?>
 <script>
-	alert("Item successfully marked as claimed");
+	alert("Reward Item successfully marked as claimed");
 	window.location.href='admin_confirm_voucher.php';
 </script>
 <?php

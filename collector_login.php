@@ -56,9 +56,9 @@ if (isset($_POST['login'])) {
 
 <body>
 
-<script>
-    swal("Welcome to Collector's Page", "You must be assigned by admin to login on this page. If not just click home to login as user.");
-  </script>
+    <script>
+        swal("Welcome to Collector's Page", "You must be assigned by admin to login on this page. If not just click home to login as user.");
+    </script>
 
     <header>
         <div class="navbar-fixed">
@@ -88,10 +88,13 @@ if (isset($_POST['login'])) {
     <section class="slider">
         <ul class="slides">
             <li>
-                <img class="responsive-img" src="images/env2.jpg">
+                <img class="responsive-img" src="images/bgc.jpg">
                 <div class="caption left-align">
-                    <h1 class="bold">CENRO Malolos</h1>
+                    <h1 class="bold">CENRO MALOLOS</h1>
                     <h5 class="bold">City Environment and Natural Resources Office.</h5>
+                    <div style="height: 200px; width:200px" class="center">
+                        <img src="images/logo.png" alt="">
+                    </div>
                 </div>
             </li>
         </ul>

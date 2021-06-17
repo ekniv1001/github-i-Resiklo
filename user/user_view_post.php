@@ -78,7 +78,7 @@ include "../services/action_posts.php";
                     <div class="col s12">
                         <div class="card">
                             <div class="card-image">
-                                <img src="../uploads/<?php echo $post['headerImg']; ?>">
+                                <img src="../uploads/<?php echo $post['headerImg']; ?>" height="500px;">
                                 <!-- <span class="card-title">Card Title</span> -->
                             </div>
                             <div class="card-content">
