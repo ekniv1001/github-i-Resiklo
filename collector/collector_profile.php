@@ -47,7 +47,7 @@ $photo = $show['photo'];
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
 
-    <title>Collector Page</title>
+    <title>Collector's Profile</title>
 
 </head>
 
@@ -215,9 +215,9 @@ $photo = $show['photo'];
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="card-action center">
+                        <div class="card-action center">
                             <a href="collector_profile_update.php?user_id=<?php echo $user_id; ?>" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>edit</a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

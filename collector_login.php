@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-    <title>i-Resiklo-Landing-Page</title>
+    <title>Collector Page</title>
 
 </head>
 

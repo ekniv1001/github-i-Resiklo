@@ -105,7 +105,7 @@ if (isset($_POST['updatebtn'])) {
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
 
-    <title>User Page</title>
+    <title>Collector Profile Update</title>
 
 </head>
 
@@ -182,13 +182,13 @@ if (isset($_POST['updatebtn'])) {
                                                         <label for="last_name">Last Name</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="input-field col s12">
-                                                        <i class="material-icons prefix green-text text-green lighten-1">event</i>
-                                                        <input disabled id="birthdate" type="text" value="<?php echo $birthday; ?>" name="birthday" class="datepicker" value="" required>
-                                                        <label for="birthdate">Birthday</label>
+                                                        <i class="material-icons prefix green-text text-green lighten-1">event</i> -->
+                                                        <input disabled id="birthdate" type="text" value="<?php echo $birthday; ?>" name="birthday" hidden class="datepicker" value="" required>
+                                                        <!-- <label for="birthdate">Birthday</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <div class="row">
                                                     <div class="input-field col s12">
@@ -257,13 +257,13 @@ if (isset($_POST['updatebtn'])) {
                                                         <label for="address">Address (House No. Bldg. St. Purok)</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="input-field col s12">
-                                                        <i class="material-icons prefix green-text text-green lighten-1">call</i>
-                                                        <input id="contact_number" value="<?php echo $contact_number; ?>" type="text" name="contact_number" onkeypress="isInputNumber(event)" class="validate" value="" required>
-                                                        <label for="contact_number">Contact Number</label>
+                                                        <i class="material-icons prefix green-text text-green lighten-1">call</i> -->
+                                                        <input id="contact_number" value="<?php echo $contact_number; ?>" type="text" hidden name="contact_number" onkeypress="isInputNumber(event)" class="validate" value="" required>
+                                                        <!-- <label for="contact_number">Contact Number</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix green-text text-green lighten-1">email</i>

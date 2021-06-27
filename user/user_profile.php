@@ -220,9 +220,9 @@ $photo = $show['photo'];
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="card-action center">
+                        <div class="card-action center">
                             <a href="user_profile_update.php?user_id=<?php echo $user_id; ?>" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>edit</a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

@@ -175,8 +175,8 @@ if (isset($_POST['updatebtn'])) {
                                                 <!-- <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix green-text text-green lighten-1">event</i> -->
-                                                        <input disabled id="birthdate" type="text" value="<?php echo $birthday; ?>" name="birthday" class="datepicker" hidden value="" required>
-                                                        <!-- <label for="birthdate">Birthday</label>
+                                                <input disabled id="birthdate" type="text" value="<?php echo $birthday; ?>" hidden name="birthday" class="datepicker" value="" required>
+                                                <!-- <label for="birthdate">Birthday</label>
                                                     </div>
                                                 </div> -->
 
@@ -250,8 +250,8 @@ if (isset($_POST['updatebtn'])) {
                                                 <!-- <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix green-text text-green lighten-1">call</i> -->
-                                                        <input id="contact_number" value="<?php echo $contact_number; ?>" type="text" name="contact_number" hidden class="validate" onkeypress="isInputNumber(event)" required>
-                                                        <!-- <label for="contact_number">Contact Number</label>
+                                                <input id="contact_number" value="<?php echo $contact_number; ?>" type="text" hidden name="contact_number" class="validate" onkeypress="isInputNumber(event)" required>
+                                                <!-- <label for="contact_number">Contact Number</label>
                                                     </div>
                                                 </div> -->
                                                 <div class="row">
@@ -297,7 +297,6 @@ if (isset($_POST['updatebtn'])) {
                     <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
                 </ul>
             </div> -->
-        </div>
         </div>
         <div class="footer-copyright">
             <div class="container">

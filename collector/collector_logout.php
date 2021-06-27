@@ -6,5 +6,5 @@ session_unset();
 
 // destroy the session 
 session_destroy(); 
-header ('LOCATION:../collector_login.php');
+header ('LOCATION:../index.php');
 ?>
