@@ -1,7 +1,15 @@
 <?php
+include "session.php";
 // include "../services/database_connection.php";
 include "../services/action_posts.php";
-include "session.php";
+
+
+
+// $title         = !empty($_SESSION['old_request']['title'])        ? $_SESSION['old_request']['title']       : "";
+// $description   = !empty($_SESSION['old_request']['description'])  ? $_SESSION['old_request']['description'] : "";
+// $author        = !empty($_SESSION['old_request']['author'])       ? $_SESSION['old_request']['author']      : "";
+// $content       = !empty($_SESSION['old_request']['content'])      ? $_SESSION['old_request']['content']     : "";
+
 ?>
 
 
@@ -19,6 +27,7 @@ include "session.php";
     <link type="text/css" rel="stylesheet" href="../css/materialize.css" media="screen,projection">
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <style type="text/css">
         header,
@@ -64,41 +73,41 @@ include "session.php";
             <div class="row">
                 <form method="POST" action="" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="file-field input-field col s6">
+                        <div class="file-field input-field col s12">
                             <div class="btn">
                                 <span>Upload<i class="material-icons">add</i></span>
-                                <input type="file" name="fileToUpload">
+                                <input id="file" type="file" name="fileToUpload"  onchange="return validate()">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="Header Image">
+                                <input class="file-path validate" type="text" placeholder="Header Image" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text text-green lighten-1">title</i>
-                            <input id="title" type="text" name="title" class="validate">
+                            <input id="title" type="text" name="title" class="validate" required>
                             <label for="title">Campaign Title</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text text-green lighten-1">description</i>
-                            <input id="title" type="text" name="description" class="validate">
+                            <input id="title" type="text" name="description" class="validate" required>
                             <label for="title">Desciption</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text text-green lighten-1">person</i>
-                            <input id="title" type="text" name="author" class="validate">
+                            <input id="title" type="text" name="author" class="validate" required>
                             <label for="title">Author</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text text-green lighten-1">article</i>
-                            <textarea id="content" name="content" class="materialize-textarea"></textarea>
+                            <textarea id="content" name="content" class="materialize-textarea" required></textarea>
                             <label for="content">Content</label>
                         </div>
                     </div>
@@ -149,6 +158,41 @@ include "session.php";
             });
         });
     </script>
+
+    <script>
+        function validate() {
+            var filename = document.getElementById('file').value;
+            var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+            //alert(extension);
+            if (extension == 'jpg' || extension == 'gif') {
+                return true;
+            } else {              
+                swal("Invalid File Format", "Oops! it seems like your image is not in \".jpg\",\".jpeg\",\".png\" format. Please select other file.", "error");
+                return false;
+            }
+        }
+    </script>
+
+
+    <?php
+    if (isset($_SESSION['status'])) {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status']; ?>",
+                text: "<?php echo $_SESSION['status_message']; ?>",
+                icon: "<?php echo $_SESSION['status_code']; ?>",
+            });
+        </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_message']);
+        unset($_SESSION['status_code']);
+    }
+    ?>
+
+
     <script type="text/javascript" src="../js/materialize.js"></script>
     <script type="text/javascript" src="../js/init.js"></script>
 

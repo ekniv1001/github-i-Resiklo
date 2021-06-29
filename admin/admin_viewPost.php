@@ -1,4 +1,5 @@
 <?php
+include "session.php";
 // include "../services/database_connection.php";
 include "../services/action_posts.php";
 ?>
@@ -18,6 +19,7 @@ include "../services/action_posts.php";
     <link type="text/css" rel="stylesheet" href="../css/materialize.css" media="screen,projection">
     <!-- Import fontawesome -->
     <script src="https://kit.fontawesome.com/621283ac00.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <style type="text/css">
         header,
@@ -138,6 +140,24 @@ include "../services/action_posts.php";
             });
         });
     </script>
+
+    <?php
+    if (isset($_SESSION['status'])) {
+
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status']; ?>",
+                text: "<?php echo $_SESSION['status_message']; ?>",
+                icon: "<?php echo $_SESSION['status_code']; ?>",
+            });
+        </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_message']);
+        unset($_SESSION['status_code']);
+    }
+    ?>
     <script type="text/javascript" src="../js/materialize.js"></script>
     <script type="text/javascript" src="../js/init.js"></script>
 
