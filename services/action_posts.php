@@ -87,7 +87,7 @@ if (isset($_REQUEST['update'])) {
         $_SESSION['status'] = 'Success';
         $_SESSION['status_code'] = 'success';
         $_SESSION['status_message'] = 'Information and Communication Campaign Updated successfully!';
-        header("Location: admin_campaign.php?info=updated");
+        header("Location: ../admin/admin_campaign.php?info=updated");
         exit();
     }
 }
@@ -102,7 +102,7 @@ if (isset($_REQUEST['delete'])) {
         $_SESSION['status'] = 'Deleted';
         $_SESSION['status_code'] = 'success';
         $_SESSION['status_message'] = 'Information and Communication Campaign Deleted successfully!';
-        header("Location: admin_campaign.php?info=deleted");
+        header("Location: ../admin/admin_campaign.php?info=deleted");
         exit();
     }
 }
