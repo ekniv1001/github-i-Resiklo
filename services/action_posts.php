@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'database_connection.php';
 
 
@@ -35,7 +36,7 @@ if (isset($_POST["publish"])) {
         } else {
             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
             $img_ex_lc = strtolower($img_ex);
-            $allowed_exs = array("jpg");
+            $allowed_exs = array("jpg", "jpeg", "png");
 
 
             if (in_array($img_ex_lc, $allowed_exs) === false) {

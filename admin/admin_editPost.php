@@ -1,7 +1,8 @@
 <?php
 include "session.php";
-// include "../services/database_connection.php";
 include "../services/action_posts.php";
+// include "../services/database_connection.php";
+
 
 ?>
 
@@ -66,7 +67,7 @@ include "../services/action_posts.php";
         <div class="container">
             <?php foreach ($query as $post) { ?>
                 <div class="row">
-                    <form method="POST" class="col s12">
+                    <form method="POST" action="../services/action_posts.php" class="col s12">
                         <div class="row">
                             <input type="text" hidden value='<?php echo $post['id'] ?>' name="id">
                             <div class="input-field col s12">

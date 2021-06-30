@@ -71,7 +71,7 @@ include "../services/action_posts.php";
     <main><br>
         <div class="container">
             <div class="row">
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="../services/action_posts.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="file-field input-field col s12">
                             <div class="btn">
@@ -164,7 +164,7 @@ include "../services/action_posts.php";
             var filename = document.getElementById('file').value;
             var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
             //alert(extension);
-            if (extension == 'jpg' || extension == 'gif') {
+            if (extension == 'jpg' || extension == 'jpeg' || extension == 'png') {
                 return true;
             } else {              
                 swal("Invalid File Format", "Oops! it seems like your image is not in \".jpg\",\".jpeg\",\".png\" format. Please select other file.", "error");

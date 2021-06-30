@@ -93,7 +93,7 @@ include "../services/action_posts.php";
                 <div class="col">
                     <a href="admin_editPost.php?id=<?php echo $post['id'] ?>" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit Post</a>
                 </div>
-                <form method="POST">
+                <form action="../services/action_posts.php" method="POST">
                     <input type="text" hidden name="id" value="<?php echo $post['id']; ?>">
                     <button name="delete" class="waves-effect waves-light btn red lighten-1"><i class="medium material-icons right">delete</i>Delete Post</button>
                 </form>
