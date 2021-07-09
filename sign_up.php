@@ -36,15 +36,15 @@ if (isset($_POST['submit'])) {
         header("Location: sign_up.php");
         exit();
     }
-    if (empty($barangay)) {
-        $_SESSION['status']         = 'Error';
-        $_SESSION['status_code']    = 'error';
-        $_SESSION['status_message'] = 'Oops! Please select your barangay';
-        $_SESSION['old_request']      = $_POST;
-        header("Location: sign_up.php");
-        exit();
+    // if (empty($barangay)) {
+    //     $_SESSION['status']         = 'Error';
+    //     $_SESSION['status_code']    = 'error';
+    //     $_SESSION['status_message'] = 'Oops! Please select your barangay';
+    //     $_SESSION['old_request']      = $_POST;
+    //     header("Location: sign_up.php");
+    //     exit();
 
-    }
+    // }
 
 
     $query = "SELECT * from tbl_userinfo where email = '$email'";
@@ -173,8 +173,8 @@ if (isset($_POST['submit'])) {
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text text-green lighten-1">place</i>
-                            <select id="barangay" name="barangay" required="">
-                                <option value="" disabled selected><label for="barangay">Choose your Barangay</label></option>
+                            <select name="barangay">
+                                <option value="" disabled selected> <label for=""> Choose your Barangay</label></option>
                                 <option value="Anilao">Anilao</option>
                                 <option value="Atlag">Atlag</option>
                                 <option value="Babatnin">Babatnin</option>
@@ -238,7 +238,7 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                     <input id="contact_number" type="text" name="contact_number" onkeypress="isInputNumber(event)" class="validate" value="00000000000" hidden required>
-                         
+
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix green-text text-green lighten-1">email</i>

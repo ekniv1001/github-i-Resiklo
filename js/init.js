@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, {});
 });
-document.addEventListener('DOMContentLoaded', function() {
-    var select = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(select, {});
-  });
+// document.addEventListener('DOMContentLoaded', function() {
+//     var select = document.querySelectorAll('select');
+//     var instances = M.FormSelect.init(select, {});
+//   });
 
 // document.addEventListener('DOMContentLoaded', function () {
 //     var collapsible = document.querySelectorAll('.collapsible');
